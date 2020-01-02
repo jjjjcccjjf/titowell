@@ -1061,7 +1061,7 @@ body .markdown-body
 <a href="https://github.com/LunaGao/BlessYourCodeTag"><img alt="JesusBless" src="https://cdn.rawgit.com/LunaGao/BlessYourCodeTag/master/tags/jesus.svg" /></a></p>
 <h2 id="table-of-contents">Table of contents<a class="headerlink" href="#table-of-contents" title="Permanent link"></a></h2>
 <ol>
-<li><strong>Sync Push</strong><ul>
+<li><strong>Push routes</strong><ul>
 <li><a href="#happiness-meter">Happiness meter</a></li>
 <li><a href="#pedometer-counter">Pedometer counter</a></li>
 <li><a href="#picture-book">Picture book</a></li>
@@ -1069,7 +1069,7 @@ body .markdown-body
 <li><a href="#wellness-program">Welness program</a></li>
 </ul>
 </li>
-<li><strong>Sync Pull</strong><ul>
+<li><strong>Pull routes</strong><ul>
 <li><a href="#users">Users</a></li>
 <li><a href="#activities">Activities</a></li>
 <li><a href="#bmi-info">BMI Info</a></li>
@@ -1077,7 +1077,7 @@ body .markdown-body
 </li>
 </ol>
 <h3 id="happiness-meter">Happiness meter<a class="headerlink" href="#happiness-meter" title="Permanent link"></a></h3>
-<p>POST <code>/happiness-meter</code>   </p>
+<p>POST <code>api/happiness-meter</code>   </p>
 <h5 id="payload">Payload<a class="headerlink" href="#payload" title="Permanent link"></a></h5>
 <table>
 <thead>
@@ -1108,17 +1108,25 @@ body .markdown-body
 <td>mood</td>
 <td>yes</td>
 <td>int</td>
-<td>1, 2, 3</td>
+<td>1, 2, 3 (worst-&gt;best)</td>
 <td>1</td>
 </tr>
 </tbody>
 </table>
 <h5 id="response">Response<a class="headerlink" href="#response" title="Permanent link"></a></h5>
 <div class="codehilite"><pre><span class="mi">200</span> <span class="nx">OK</span>
+<span class="p">{</span>
+  <span class="s2">&quot;data&quot;</span><span class="o">:</span> <span class="p">{},</span>
+  <span class="s2">&quot;meta&quot;</span><span class="o">:</span> <span class="p">{</span>
+    <span class="s2">&quot;message&quot;</span><span class="o">:</span> <span class="s2">&quot;Data inserted&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;code&quot;</span><span class="o">:</span> <span class="s2">&quot;ok&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;status&quot;</span><span class="o">:</span> <span class="s2">&quot;200&quot;</span>
+  <span class="p">}</span>
+<span class="p">}</span>
 </pre></div>
 
 <h3 id="pedometer-counter">Pedometer counter<a class="headerlink" href="#pedometer-counter" title="Permanent link"></a></h3>
-<p>POST <code>/pedometer-counter</code>   </p>
+<p>POST <code>api/pedometer-counter</code>   </p>
 <h5 id="payload_1">Payload<a class="headerlink" href="#payload_1" title="Permanent link"></a></h5>
 <table>
 <thead>
@@ -1156,10 +1164,18 @@ body .markdown-body
 </table>
 <h5 id="response_1">Response<a class="headerlink" href="#response_1" title="Permanent link"></a></h5>
 <div class="codehilite"><pre><span class="mi">200</span> <span class="nx">OK</span>
+<span class="p">{</span>
+  <span class="s2">&quot;data&quot;</span><span class="o">:</span> <span class="p">{},</span>
+  <span class="s2">&quot;meta&quot;</span><span class="o">:</span> <span class="p">{</span>
+    <span class="s2">&quot;message&quot;</span><span class="o">:</span> <span class="s2">&quot;Data inserted&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;code&quot;</span><span class="o">:</span> <span class="s2">&quot;ok&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;status&quot;</span><span class="o">:</span> <span class="s2">&quot;200&quot;</span>
+  <span class="p">}</span>
+<span class="p">}</span>
 </pre></div>
 
 <h3 id="picture-book">Picture book<a class="headerlink" href="#picture-book" title="Permanent link"></a></h3>
-<p>POST <code>/picture-book</code>   </p>
+<p>POST <code>api/picture-book</code>   </p>
 <h5 id="payload_2">Payload<a class="headerlink" href="#payload_2" title="Permanent link"></a></h5>
 <table>
 <thead>
@@ -1197,10 +1213,18 @@ body .markdown-body
 </table>
 <h5 id="response_2">Response<a class="headerlink" href="#response_2" title="Permanent link"></a></h5>
 <div class="codehilite"><pre><span class="mi">200</span> <span class="nx">OK</span>
+<span class="p">{</span>
+  <span class="s2">&quot;data&quot;</span><span class="o">:</span> <span class="p">{},</span>
+  <span class="s2">&quot;meta&quot;</span><span class="o">:</span> <span class="p">{</span>
+    <span class="s2">&quot;message&quot;</span><span class="o">:</span> <span class="s2">&quot;Data inserted&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;code&quot;</span><span class="o">:</span> <span class="s2">&quot;ok&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;status&quot;</span><span class="o">:</span> <span class="s2">&quot;200&quot;</span>
+  <span class="p">}</span>
+<span class="p">}</span>
 </pre></div>
 
 <h3 id="tito">TiTo<a class="headerlink" href="#tito" title="Permanent link"></a></h3>
-<p>POST <code>/tito</code>   </p>
+<p>POST <code>api/tito</code>   </p>
 <h5 id="payload_3">Payload<a class="headerlink" href="#payload_3" title="Permanent link"></a></h5>
 <table>
 <thead>
@@ -1243,8 +1267,20 @@ body .markdown-body
 </tr>
 </tbody>
 </table>
+<h5 id="response_3">Response<a class="headerlink" href="#response_3" title="Permanent link"></a></h5>
+<div class="codehilite"><pre><span class="mi">200</span> <span class="nx">OK</span>
+<span class="p">{</span>
+  <span class="s2">&quot;data&quot;</span><span class="o">:</span> <span class="p">{},</span>
+  <span class="s2">&quot;meta&quot;</span><span class="o">:</span> <span class="p">{</span>
+    <span class="s2">&quot;message&quot;</span><span class="o">:</span> <span class="s2">&quot;Data inserted&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;code&quot;</span><span class="o">:</span> <span class="s2">&quot;ok&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;status&quot;</span><span class="o">:</span> <span class="s2">&quot;200&quot;</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+
 <h3 id="wellness-program">Wellness Program<a class="headerlink" href="#wellness-program" title="Permanent link"></a></h3>
-<p>POST <code>/wellness-program</code>   </p>
+<p>POST <code>api/wellness-program</code>   </p>
 <h5 id="payload_4">Payload<a class="headerlink" href="#payload_4" title="Permanent link"></a></h5>
 <table>
 <thead>
@@ -1294,24 +1330,214 @@ body .markdown-body
 </tr>
 </tbody>
 </table>
-<h5 id="response_3">Response<a class="headerlink" href="#response_3" title="Permanent link"></a></h5>
+<h5 id="response_4">Response<a class="headerlink" href="#response_4" title="Permanent link"></a></h5>
 <div class="codehilite"><pre><span class="mi">200</span> <span class="nx">OK</span>
+<span class="p">{</span>
+  <span class="s2">&quot;data&quot;</span><span class="o">:</span> <span class="p">{},</span>
+  <span class="s2">&quot;meta&quot;</span><span class="o">:</span> <span class="p">{</span>
+    <span class="s2">&quot;message&quot;</span><span class="o">:</span> <span class="s2">&quot;Data inserted&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;code&quot;</span><span class="o">:</span> <span class="s2">&quot;ok&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;status&quot;</span><span class="o">:</span> <span class="s2">&quot;200&quot;</span>
+  <span class="p">}</span>
+<span class="p">}</span>
 </pre></div>
 
 <h3 id="users">Users<a class="headerlink" href="#users" title="Permanent link"></a></h3>
-<p>GET <code>/users/timestamp/:unix_timestamp</code>   </p>
-<h5 id="response_4">Response<a class="headerlink" href="#response_4" title="Permanent link"></a></h5>
+<p>GET <code>api/users/timestamp/:unix_timestamp</code>   </p>
+<h5 id="response_5">Response<a class="headerlink" href="#response_5" title="Permanent link"></a></h5>
 <div class="codehilite"><pre><span class="mi">200</span> <span class="nx">OK</span>
+<span class="p">{</span>
+  <span class="s2">&quot;data&quot;</span><span class="o">:</span> <span class="p">[</span>
+    <span class="p">{</span>
+      <span class="s2">&quot;id&quot;</span><span class="o">:</span> <span class="s2">&quot;3&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;fname&quot;</span><span class="o">:</span> <span class="s2">&quot;Delta&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;lname&quot;</span><span class="o">:</span> <span class="s2">&quot;One&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;pin&quot;</span><span class="o">:</span> <span class="s2">&quot;$2y$10$WOZLRKM7KCfHaA9qOiLZROkwGeN.9SNQITgEDZYgyWEM.zh\/pe.O2&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;gender&quot;</span><span class="o">:</span> <span class="s2">&quot;male&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;birth_date&quot;</span><span class="o">:</span> <span class="s2">&quot;1994-12-24&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;profile_pic_file&quot;</span><span class="o">:</span> <span class="s2">&quot;https:\/\/robohash.org\/delta.png?set=set4&amp;size=150x150&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;initial_weight_in_pounds&quot;</span><span class="o">:</span> <span class="s2">&quot;140&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;height_in_feet&quot;</span><span class="o">:</span> <span class="s2">&quot;5&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;height_in_inches&quot;</span><span class="o">:</span> <span class="s2">&quot;8&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;created_at&quot;</span><span class="o">:</span> <span class="s2">&quot;2019-12-11 14:30:31&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;updated_at&quot;</span><span class="o">:</span> <span class="s2">&quot;2020-01-02 14:29:12&quot;</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+      <span class="s2">&quot;id&quot;</span><span class="o">:</span> <span class="s2">&quot;1&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;fname&quot;</span><span class="o">:</span> <span class="s2">&quot;Endan&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;lname&quot;</span><span class="o">:</span> <span class="s2">&quot;Pendleton&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;pin&quot;</span><span class="o">:</span> <span class="s2">&quot;$2y$10$WOZLRKM7KCfHaA9qOiLZROkwGeN.9SNQITgEDZYgyWEM.zh\/pe.O2&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;gender&quot;</span><span class="o">:</span> <span class="s2">&quot;male&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;birth_date&quot;</span><span class="o">:</span> <span class="s2">&quot;1994-12-10&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;profile_pic_file&quot;</span><span class="o">:</span> <span class="s2">&quot;https:\/\/robohash.org\/endan.png?set=set4&amp;size=150x150&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;initial_weight_in_pounds&quot;</span><span class="o">:</span> <span class="s2">&quot;140&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;height_in_feet&quot;</span><span class="o">:</span> <span class="s2">&quot;5&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;height_in_inches&quot;</span><span class="o">:</span> <span class="s2">&quot;7&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;created_at&quot;</span><span class="o">:</span> <span class="s2">&quot;2019-12-09 13:39:51&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;updated_at&quot;</span><span class="o">:</span> <span class="s2">&quot;2020-01-02 14:29:06&quot;</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+      <span class="s2">&quot;id&quot;</span><span class="o">:</span> <span class="s2">&quot;2&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;fname&quot;</span><span class="o">:</span> <span class="s2">&quot;Jhondz&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;lname&quot;</span><span class="o">:</span> <span class="s2">&quot;Anib&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;pin&quot;</span><span class="o">:</span> <span class="s2">&quot;$2y$10$WOZLRKM7KCfHaA9qOiLZROkwGeN.9SNQITgEDZYgyWEM.zh\/pe.O2&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;gender&quot;</span><span class="o">:</span> <span class="s2">&quot;male&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;birth_date&quot;</span><span class="o">:</span> <span class="s2">&quot;1994-12-24&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;profile_pic_file&quot;</span><span class="o">:</span> <span class="s2">&quot;https:\/\/robohash.org\/jhondz.png?set=set4&amp;size=150x150&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;initial_weight_in_pounds&quot;</span><span class="o">:</span> <span class="s2">&quot;140&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;height_in_feet&quot;</span><span class="o">:</span> <span class="s2">&quot;5&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;height_in_inches&quot;</span><span class="o">:</span> <span class="s2">&quot;7&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;created_at&quot;</span><span class="o">:</span> <span class="s2">&quot;2019-12-09 20:39:51&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;updated_at&quot;</span><span class="o">:</span> <span class="s2">&quot;2020-01-02 14:29:10&quot;</span>
+    <span class="p">}</span>
+  <span class="p">],</span>
+  <span class="s2">&quot;meta&quot;</span><span class="o">:</span> <span class="p">{</span>
+    <span class="s2">&quot;message&quot;</span><span class="o">:</span> <span class="s2">&quot;Got all data&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;code&quot;</span><span class="o">:</span> <span class="s2">&quot;ok&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;status&quot;</span><span class="o">:</span> <span class="mi">200</span><span class="p">,</span>
+    <span class="s2">&quot;last_update_ymd&quot;</span><span class="o">:</span> <span class="s2">&quot;2020-01-02 14:29:12&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;last_update_unix&quot;</span><span class="o">:</span> <span class="mi">1577971752</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+
+<h5 id="response_6">Response<a class="headerlink" href="#response_6" title="Permanent link"></a></h5>
+<div class="codehilite"><pre><span class="mi">200</span> <span class="nx">OK</span>
+<span class="p">{</span>
+  <span class="s2">&quot;data&quot;</span><span class="o">:</span> <span class="p">{},</span>
+  <span class="s2">&quot;meta&quot;</span><span class="o">:</span> <span class="p">{</span>
+    <span class="s2">&quot;message&quot;</span><span class="o">:</span> <span class="s2">&quot;No new data&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;code&quot;</span><span class="o">:</span> <span class="s2">&quot;you_are_up_to_date&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;status&quot;</span><span class="o">:</span> <span class="mi">200</span><span class="p">,</span>
+    <span class="s2">&quot;last_update_ymd&quot;</span><span class="o">:</span> <span class="s2">&quot;2019-12-11 14:31:31&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;last_update_unix&quot;</span><span class="o">:</span> <span class="mi">1576071091</span>
+  <span class="p">}</span>
+<span class="p">}</span> 
 </pre></div>
 
 <h3 id="bmi-info">BMI Info<a class="headerlink" href="#bmi-info" title="Permanent link"></a></h3>
-<p>GET <code>/bmi-info/timestamp/:unix_timestamp</code>   </p>
-<h5 id="response_5">Response<a class="headerlink" href="#response_5" title="Permanent link"></a></h5>
+<p>GET <code>api/bmi-info/timestamp/:unix_timestamp</code>   </p>
+<h5 id="response_7">Response<a class="headerlink" href="#response_7" title="Permanent link"></a></h5>
 <div class="codehilite"><pre><span class="mi">200</span> <span class="nx">OK</span>
+<span class="p">{</span>
+  <span class="s2">&quot;data&quot;</span><span class="o">:</span> <span class="p">[</span>
+    <span class="p">{</span>
+      <span class="s2">&quot;id&quot;</span><span class="o">:</span> <span class="s2">&quot;1&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;label&quot;</span><span class="o">:</span> <span class="s2">&quot;Underweight&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;description&quot;</span><span class="o">:</span> <span class="s2">&quot;There are many reasons why people become underweight. Some do not eat a healthy, balanced diet. This may be for a variety of reasons including feeling too busy to eat, forgetting to eat, or even not being able to afford to eat sufficient nutritious foods. Even in a wealthy country like Australia some groups may find it difficult to provide enough food from the five food groups to eat every day. Weight loss can also be due to physical illness, such as infections, cancer or other conditions. Some people experience weight loss at times of stress.&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;notes_health_risks&quot;</span><span class="o">:</span> <span class="s2">&quot;Being underweight has important implications for your health. People who are very underweight:\r\n- Are at higher risk of having osteoporosis, decreased muscle strength, hypothermia and lowered immunity\r\n- May not live as long as those who are a healthy weight.\r\n&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;min_bmi&quot;</span><span class="o">:</span> <span class="s2">&quot;0&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;max_bmi&quot;</span><span class="o">:</span> <span class="s2">&quot;18.49&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;created_at&quot;</span><span class="o">:</span> <span class="s2">&quot;2019-12-09 14:03:06&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;updated_at&quot;</span><span class="o">:</span> <span class="s2">&quot;0000-00-00 00:00:00&quot;</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+      <span class="s2">&quot;id&quot;</span><span class="o">:</span> <span class="s2">&quot;2&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;label&quot;</span><span class="o">:</span> <span class="s2">&quot;Healthy weight range&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;description&quot;</span><span class="o">:</span> <span class="s2">&quot;There are many reasons why being a healthy weight is important.\r\n\r\nDid you know that a person with a BMI of between 30 and 35 may die two to four years earlier than someone of a healthy weight?\r\n\r\nAnd a person with a BMI of between 40 and 45 may die eight to 10 years earlier.\r\n\r\nPeople who are very underweight may also not live as long as those who are a healthy weight.&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;notes_health_risks&quot;</span><span class="o">:</span> <span class="s2">&quot;But it’s not just about the risk of dying younger, it’s also about your quality of life – or how well you feel. People who are a healthy weight have a lower risk of:\r\n\r\n-Heart disease\r\n-Stroke\r\n-High blood pressure\r\n-Type 2 diabetes\r\n-Some types of cancer\r\n-Kidney disease\r\n-Back pain\r\n-Knee pain\r\n-Infertility\r\n-Breathing problems\r\n-Anxiety\r\n-Depression\r\n-Sleep problems\r\n-Gall bladder disease\r\n-Fatty liver disease&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;min_bmi&quot;</span><span class="o">:</span> <span class="s2">&quot;18.5&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;max_bmi&quot;</span><span class="o">:</span> <span class="s2">&quot;24.9&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;created_at&quot;</span><span class="o">:</span> <span class="s2">&quot;2019-12-09 14:03:06&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;updated_at&quot;</span><span class="o">:</span> <span class="s2">&quot;0000-00-00 00:00:00&quot;</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+      <span class="s2">&quot;id&quot;</span><span class="o">:</span> <span class="s2">&quot;3&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;label&quot;</span><span class="o">:</span> <span class="s2">&quot;Overweight&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;description&quot;</span><span class="o">:</span> <span class="s2">&quot;If your BMI is between 25 and 29.9, your BMI is within the overweight category. This may not be good for your health&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;notes_health_risks&quot;</span><span class="o">:</span> <span class="s2">&quot;Test&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;min_bmi&quot;</span><span class="o">:</span> <span class="s2">&quot;25&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;max_bmi&quot;</span><span class="o">:</span> <span class="s2">&quot;29.9&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;created_at&quot;</span><span class="o">:</span> <span class="s2">&quot;2019-12-09 14:03:06&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;updated_at&quot;</span><span class="o">:</span> <span class="s2">&quot;0000-00-00 00:00:00&quot;</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+      <span class="s2">&quot;id&quot;</span><span class="o">:</span> <span class="s2">&quot;4&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;label&quot;</span><span class="o">:</span> <span class="s2">&quot;Obese&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;description&quot;</span><span class="o">:</span> <span class="s2">&quot;If you BMI is 30 or over, you are within the obese category. This may not be good for your health. There are many benefits of moving towards a healthy weight and losing even a small amount of weight can bring health benefits&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;notes_health_risks&quot;</span><span class="o">:</span> <span class="s2">&quot;Test&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;min_bmi&quot;</span><span class="o">:</span> <span class="s2">&quot;30&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;max_bmi&quot;</span><span class="o">:</span> <span class="s2">&quot;999&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;created_at&quot;</span><span class="o">:</span> <span class="s2">&quot;2019-12-09 14:03:06&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;updated_at&quot;</span><span class="o">:</span> <span class="s2">&quot;0000-00-00 00:00:00&quot;</span>
+    <span class="p">}</span>
+  <span class="p">],</span>
+  <span class="s2">&quot;meta&quot;</span><span class="o">:</span> <span class="p">{</span>
+    <span class="s2">&quot;message&quot;</span><span class="o">:</span> <span class="s2">&quot;Got all data&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;code&quot;</span><span class="o">:</span> <span class="s2">&quot;ok&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;status&quot;</span><span class="o">:</span> <span class="mi">200</span><span class="p">,</span>
+    <span class="s2">&quot;last_update_ymd&quot;</span><span class="o">:</span> <span class="s2">&quot;2019-12-09 14:03:06&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;last_update_unix&quot;</span><span class="o">:</span> <span class="mi">1575896586</span>
+  <span class="p">}</span>
+<span class="p">}</span> 
+</pre></div>
+
+<div class="codehilite"><pre><span class="mi">200</span> <span class="nx">OK</span>
+<span class="p">{</span>
+  <span class="s2">&quot;data&quot;</span><span class="o">:</span> <span class="p">{},</span>
+  <span class="s2">&quot;meta&quot;</span><span class="o">:</span> <span class="p">{</span>
+    <span class="s2">&quot;message&quot;</span><span class="o">:</span> <span class="s2">&quot;No new data&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;code&quot;</span><span class="o">:</span> <span class="s2">&quot;you_are_up_to_date&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;status&quot;</span><span class="o">:</span> <span class="mi">200</span><span class="p">,</span>
+    <span class="s2">&quot;last_update_ymd&quot;</span><span class="o">:</span> <span class="s2">&quot;2019-12-09 14:03:06&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;last_update_unix&quot;</span><span class="o">:</span> <span class="mi">1575896586</span>
+  <span class="p">}</span>
+<span class="p">}</span> 
 </pre></div>
 
 <h3 id="activities">Activities<a class="headerlink" href="#activities" title="Permanent link"></a></h3>
-<p>GET <code>/activities/timestamp/:unix_timestamp</code>   </p>
-<h5 id="response_6">Response<a class="headerlink" href="#response_6" title="Permanent link"></a></h5>
+<p>GET <code>api/activities/timestamp/:unix_timestamp</code>   </p>
+<h5 id="response_8">Response<a class="headerlink" href="#response_8" title="Permanent link"></a></h5>
 <div class="codehilite"><pre><span class="mi">200</span> <span class="nx">OK</span>
+<span class="p">{</span>
+  <span class="s2">&quot;data&quot;</span><span class="o">:</span> <span class="p">[</span>
+    <span class="p">{</span>
+      <span class="s2">&quot;id&quot;</span><span class="o">:</span> <span class="s2">&quot;1&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;name&quot;</span><span class="o">:</span> <span class="s2">&quot;Yoga&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;pin&quot;</span><span class="o">:</span> <span class="s2">&quot;1234&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;pic_file&quot;</span><span class="o">:</span> <span class="s2">&quot;https:\/\/robohash.org\/yoga.png?set=set4&amp;size=150x150&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;day_scheduled&quot;</span><span class="o">:</span> <span class="s2">&quot;wednesday&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;created_at&quot;</span><span class="o">:</span> <span class="s2">&quot;2019-12-09 14:34:42&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;updated_at&quot;</span><span class="o">:</span> <span class="s2">&quot;0000-00-00 00:00:00&quot;</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+      <span class="s2">&quot;id&quot;</span><span class="o">:</span> <span class="s2">&quot;2&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;name&quot;</span><span class="o">:</span> <span class="s2">&quot;Zumba&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;pin&quot;</span><span class="o">:</span> <span class="s2">&quot;1234&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;pic_file&quot;</span><span class="o">:</span> <span class="s2">&quot;https:\/\/robohash.org\/zumba.png?set=set4&amp;size=150x150&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;day_scheduled&quot;</span><span class="o">:</span> <span class="s2">&quot;thursday&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;created_at&quot;</span><span class="o">:</span> <span class="s2">&quot;2019-12-09 14:34:42&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;updated_at&quot;</span><span class="o">:</span> <span class="s2">&quot;0000-00-00 00:00:00&quot;</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+      <span class="s2">&quot;id&quot;</span><span class="o">:</span> <span class="s2">&quot;3&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;name&quot;</span><span class="o">:</span> <span class="s2">&quot;Mental health&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;pin&quot;</span><span class="o">:</span> <span class="s2">&quot;1234&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;pic_file&quot;</span><span class="o">:</span> <span class="s2">&quot;https:\/\/robohash.org\/mental.png?set=set4&amp;size=150x150&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;day_scheduled&quot;</span><span class="o">:</span> <span class="s2">&quot;friday&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;created_at&quot;</span><span class="o">:</span> <span class="s2">&quot;2019-12-09 14:34:42&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;updated_at&quot;</span><span class="o">:</span> <span class="s2">&quot;0000-00-00 00:00:00&quot;</span>
+    <span class="p">}</span>
+  <span class="p">],</span>
+  <span class="s2">&quot;meta&quot;</span><span class="o">:</span> <span class="p">{</span>
+    <span class="s2">&quot;message&quot;</span><span class="o">:</span> <span class="s2">&quot;Got all data&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;code&quot;</span><span class="o">:</span> <span class="s2">&quot;ok&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;status&quot;</span><span class="o">:</span> <span class="mi">200</span><span class="p">,</span>
+    <span class="s2">&quot;last_update_ymd&quot;</span><span class="o">:</span> <span class="s2">&quot;2019-12-09 14:34:42&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;last_update_unix&quot;</span><span class="o">:</span> <span class="mi">1575898482</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+
+<div class="codehilite"><pre><span class="mi">200</span> <span class="nx">OK</span>
+<span class="p">{</span>
+  <span class="s2">&quot;data&quot;</span><span class="o">:</span> <span class="p">{},</span>
+  <span class="s2">&quot;meta&quot;</span><span class="o">:</span> <span class="p">{</span>
+    <span class="s2">&quot;message&quot;</span><span class="o">:</span> <span class="s2">&quot;No new data&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;code&quot;</span><span class="o">:</span> <span class="s2">&quot;you_are_up_to_date&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;status&quot;</span><span class="o">:</span> <span class="mi">200</span><span class="p">,</span>
+    <span class="s2">&quot;last_update_ymd&quot;</span><span class="o">:</span> <span class="s2">&quot;2019-12-09 14:03:06&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;last_update_unix&quot;</span><span class="o">:</span> <span class="mi">1575896586</span>
+  <span class="p">}</span>
+<span class="p">}</span> 
 </pre></div></article></body></html>

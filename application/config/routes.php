@@ -70,9 +70,9 @@ $route['api/users/timestamp/(:num)'] = 'api/users/timestamp/$1';
 $route['api/bmi-info/timestamp/(:num)'] = 'api/bmi_info/timestamp/$1';
 $route['api/activities/timestamp/(:num)'] = 'api/activities/timestamp/$1';
 # push routes
-$route['api/happiness-meter'] = 'api/happiness-meter';
-$route['api/pedometer-counter'] = 'api/pedometer-counter';
-$route['api/picture-book'] = 'api/picture-book';
+$route['api/happiness-meter'] = 'api/happiness_meter';
+$route['api/pedometer-counter'] = 'api/pedometer_counter';
+$route['api/picture-book'] = 'api/picture_book';
 $route['api/tito'] = 'api/tito';
 
 $route['migrate/(:any)'] = 'migrate/index/$1';

@@ -22,18 +22,24 @@ POST `api/happiness-meter`
 
 ##### Payload
 
-|      Name      | Required |   Type    |    Description    |    Sample Data 
-|----------------|----------|-----------|-------------------|-----------------------
-| user_id        |  yes     |  int      |        -          |  1
-| datetime       |  yes     |  datetime | datetime recorded |  2018-11-30 11:11:11
-| mood           |  yes     |  int      | 1, 2, 3           |  1
+|      Name      | Required |   Type    |    Description        |    Sample Data 
+|----------------|----------|-----------|-----------------------|-----------------------
+| user_id        |  yes     |  int      |        -              |  1
+| datetime       |  yes     |  datetime | datetime recorded     |  2018-11-30 11:11:11
+| mood           |  yes     |  int      | 1, 2, 3 (worst->best) |  1
 
 
 ##### Response
 ```javascript
 200 OK
-
- 
+{
+  "data": {},
+  "meta": {
+    "message": "Data inserted",
+    "code": "ok",
+    "status": "200"
+  }
+}
 ```
 
 ### Pedometer counter
@@ -51,8 +57,14 @@ POST `api/pedometer-counter`
 ##### Response
 ```javascript
 200 OK
-
- 
+{
+  "data": {},
+  "meta": {
+    "message": "Data inserted",
+    "code": "ok",
+    "status": "200"
+  }
+}
 ```
 
 ### Picture book
@@ -70,8 +82,14 @@ POST `api/picture-book`
 ##### Response
 ```javascript
 200 OK
-
- 
+{
+  "data": {},
+  "meta": {
+    "message": "Data inserted",
+    "code": "ok",
+    "status": "200"
+  }
+}
 ```
 
 ### TiTo
@@ -86,6 +104,19 @@ POST `api/tito`
 | weight_in_pounds |  yes     |  int    | -  |  140
 | type           |  yes     |  string   | enum('ti', 'to')  |  ti
 
+##### Response
+```javascript
+200 OK
+{
+  "data": {},
+  "meta": {
+    "message": "Data inserted",
+    "code": "ok",
+    "status": "200"
+  }
+}
+```
+
 
 ### Wellness Program
 POST `api/wellness-program`   
@@ -97,15 +128,21 @@ POST `api/wellness-program`
 | user_id        |  yes     |  int      |        -          |  1
 | activity_id    |  yes     |  int      |        -          |  1
 | datetime       |  yes     |  datetime | datetime recorded |  2018-11-30 11:11:11
-| mood           |  yes     |  int    | 1, 2, 3, 4, 5       |  5
+| mood           |  yes     |  int    | 1, 2, 3, 4, 5 (worst->best)      |  5
 | comment        |  no      |  string   | -                 |  I love today's session!
 
 
 ##### Response
 ```javascript
 200 OK
-
- 
+{
+  "data": {},
+  "meta": {
+    "message": "Data inserted",
+    "code": "ok",
+    "status": "200"
+  }
+}
 ```
 
 ### Users
@@ -120,48 +157,51 @@ GET `api/users/timestamp/:unix_timestamp`
       "id": "3",
       "fname": "Delta",
       "lname": "One",
-      "pin": "12345",
+      "pin": "$2y$10$WOZLRKM7KCfHaA9qOiLZROkwGeN.9SNQITgEDZYgyWEM.zh\/pe.O2",
       "gender": "male",
       "birth_date": "1994-12-24",
       "profile_pic_file": "https:\/\/robohash.org\/delta.png?set=set4&size=150x150",
+      "initial_weight_in_pounds": "140",
       "height_in_feet": "5",
       "height_in_inches": "8",
       "created_at": "2019-12-11 14:30:31",
-      "updated_at": "2019-12-11 14:31:31"
+      "updated_at": "2020-01-02 14:29:12"
     },
     {
       "id": "1",
       "fname": "Endan",
       "lname": "Pendleton",
-      "pin": "12345",
+      "pin": "$2y$10$WOZLRKM7KCfHaA9qOiLZROkwGeN.9SNQITgEDZYgyWEM.zh\/pe.O2",
       "gender": "male",
       "birth_date": "1994-12-10",
       "profile_pic_file": "https:\/\/robohash.org\/endan.png?set=set4&size=150x150",
+      "initial_weight_in_pounds": "140",
       "height_in_feet": "5",
       "height_in_inches": "7",
       "created_at": "2019-12-09 13:39:51",
-      "updated_at": "2019-12-09 18:39:51"
+      "updated_at": "2020-01-02 14:29:06"
     },
     {
       "id": "2",
       "fname": "Jhondz",
       "lname": "Anib",
-      "pin": "12345",
+      "pin": "$2y$10$WOZLRKM7KCfHaA9qOiLZROkwGeN.9SNQITgEDZYgyWEM.zh\/pe.O2",
       "gender": "male",
       "birth_date": "1994-12-24",
       "profile_pic_file": "https:\/\/robohash.org\/jhondz.png?set=set4&size=150x150",
+      "initial_weight_in_pounds": "140",
       "height_in_feet": "5",
       "height_in_inches": "7",
       "created_at": "2019-12-09 20:39:51",
-      "updated_at": "0000-00-00 00:00:00"
+      "updated_at": "2020-01-02 14:29:10"
     }
   ],
   "meta": {
     "message": "Got all data",
     "code": "ok",
     "status": 200,
-    "last_update_ymd": "2019-12-11 14:31:31",
-    "last_update_unix": 1576071091
+    "last_update_ymd": "2020-01-02 14:29:12",
+    "last_update_unix": 1577971752
   }
 }
 ```
