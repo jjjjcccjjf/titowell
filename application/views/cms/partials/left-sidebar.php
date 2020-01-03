@@ -6,7 +6,7 @@
       <i class="fa fa-bars"></i>
     </div>
     <!--logo start-->
-    <a href="index.html" class="logo" >RestIgniter<span>CRUD</span></a>
+    <a href="index.html" class="logo" >TITO<span>WELL</span></a>
     <!--logo end-->
     <div class="top-nav ">
       <ul class="nav pull-right top-menu">
@@ -35,6 +35,13 @@
             class="<?php echo $this->uri->segment(1) === 'cms' && ($this->uri->segment(2) === null || $this->uri->segment(2) === 'dashboard') ? 'active': ''; ?>">
             <i class="fa fa-dashboard"></i>
             <span>Admin Management</span>
+          </a>
+        </li>
+        <li>
+          <a href="<?php echo base_url('cms/users') ?>"
+            class="<?php echo $this->uri->segment(1) === 'cms' && ($this->uri->segment(2) === null || $this->uri->segment(2) === 'users') ? 'active': ''; ?>">
+            <i class="fa fa-dashboard"></i>
+            <span>Users</span>
           </a>
         </li>
         <li class="sub-menu">
