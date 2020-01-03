@@ -12,7 +12,14 @@ class Picture_book extends Crud_controller
   function index_post()
   {
   	$res = (object)[];
-  	$data = $this->picture_book_model->add($this->input->post());
+
+        # NOTE: This is an example usage of batch upload
+    // $data = array_merge($this->input->post(), $this->model->batch_upload($_FILES['input_name']));
+
+    # NOTE: This is an example usage of single upload
+    $posty = array_merge($this->input->post(), $this->picture_book_model->upload('pic_file'));
+
+  	$data = $this->picture_book_model->add($posty);
 
   	if ($data) {
 	  	$res->data = (object)[];

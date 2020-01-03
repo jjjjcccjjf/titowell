@@ -10,7 +10,7 @@
     + [Pedometer counter](#pedometer-counter)
     + [Picture book](#picture-book)
     + [TiTo](#tito)
-    + [Welness program](#wellness-program)
+    + [Wellness program](#wellness-program)
 1. **Pull routes**
     + [Users](#users)
     + [Activities](#activities)
@@ -76,7 +76,7 @@ POST `api/picture-book`
 |----------------|----------|-----------|-------------------|-----------------------
 | user_id        |  yes     |  int      |        -          |  1
 | datetime       |  yes     |  datetime | datetime recorded |  2018-11-30 11:11:11
-| pic_file       |  yes     |  file     | pag same filename parin yung sinend, iiignore ko na. won't upload again. will just use reference from the previous pic file |  cutepicture.jpg
+| pic_file       |  yes     |  file     | if same filename, just overwrite |  cutepicture.jpg
 
 
 ##### Response
