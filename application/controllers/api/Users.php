@@ -29,7 +29,7 @@ class Users extends Crud_controller
 		 	'last_update_unix' => strtotime($greatest_timestamp),
 		 ];
 	 } else {
-		 $res->data = (object)[];
+		 $res->data = [];
 		 $res->meta = (object)[
 		 	'message' => 'No new data',
 		 	'code' => 'you_are_up_to_date',

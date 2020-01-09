@@ -32,22 +32,32 @@
                 <tbody>
                   <?php if (count($res) > 0 ): ?>
 
-                    <?php $i = 1; foreach ($res as $key => $value): ?>
+                    <?php $i = 1 + $this->uri->segment(4); foreach ($res as $key => $value): ?>
                       <tr>
                         <th scope="row"><?php echo $i++ ?></th>
                         <td><?php echo $value->full_name ?></td>
                         <td><span>********</span> <button class="btn btn-xs btn-info view-pin pull-right" data-pin="<?php echo base64_decode($value->pin) ?>"><i class="fa fa-eye"></i></button></td>
                         <td><?php echo $value->gender ?></td>
                         <td><?php echo $value->birth_date_formatted ?></td>
-                        <td><img src="<?php echo $value->profile_pic_path ?>"></td>
+                        <td><img src="<?php echo $value->profile_pic_path ?>" style="max-width:150px"></td>
                         <td><?php echo $value->initial_weight_in_pounds ?> (lbs)</td>
                         <td><?php echo $value->height_in_feet ?>' <?php echo $value->height_in_inches ?>"</td>
                         <td>
                           <button type="button"
                           data-payload='<?php echo json_encode(['id' => $value->id, 'fname' => $value->fname, 'lname' => $value->lname, 'gender' => $value->gender, 'birth_date' => $value->birth_date, 'pin' => base64_decode($value->pin), 'profile_pic_path' => $value->profile_pic_path, 'initial_weight_in_pounds' => $value->initial_weight_in_pounds, 'height_in_feet' => $value->height_in_feet, 'height_in_inches' => $value->height_in_inches])?>'
                           class="edit-row btn btn-info btn-xs">Edit</button>
-                          <button type="button" data-id='<?php echo $value->id; ?>'
+                          <br >
+                          <button style="margin-top:5px" type="button" data-id='<?php echo $value->id; ?>'
                             class="btn btn-delete btn-danger btn-xs">Delete</button>
+                          <br >
+                          <button style="margin-top:5px" type="button" data-id='<?php echo $value->id; ?>'
+                            class="btn btn-success btn-xs">BMI</button>
+                          <br >
+                          <button style="margin-top:5px" type="button" data-id='<?php echo $value->id; ?>'
+                            class="btn btn-success btn-xs">Attendance</button>
+                          <br >
+                          <button style="margin-top:5px" type="button" data-id='<?php echo $value->id; ?>'
+                            class="btn btn-success btn-xs">TiTo</button>
                           </td>
                         </tr>
                       <?php endforeach; ?>
@@ -55,11 +65,19 @@
 
                     <?php else: ?>
                       <tr>
-                        <td colspan="4" style="text-align:center">Empty table data</td>
+                        <td colspan="9" style="text-align:center">Empty table data</td>
                       </tr>
                     <?php endif; ?>
                   </tbody>
                 </table>
+                <style>
+                .active_lg {
+                  background: lightgray !important
+                }
+                </style>
+                <ul class='pagination'>
+                  <?php echo $pagination ?>
+                </ul>
               </div>
             </div>
           </section>
@@ -79,7 +97,7 @@
         </div>
         <div class="modal-body">
 
-          <form role="form" method="post" enctype="multipart/formdata">
+          <form role="form" method="post" enctype="multipart/form-data">
             <div class="form-group">
                 <div class="row">
                   <div class="col-md-6">
@@ -133,10 +151,10 @@
             </div>
             <div class="form-group">
               <label >Profile picture</label> 
-              <div><img src="" id="profile_pic_modal_image"></div>
+              <div><img src="" id="profile_pic_modal_image" style="max-width:150px"></div>
               <input type="file" class="form-control" name="profile_pic_file">
             </div>
-
+            <input type="hidden" name="__offset" value="<?php echo $this->uri->segment(4) ?>">
           </div>
           <div class="modal-footer">
             <button data-dismiss="modal" class="btn btn-default" type="button">Close</button>
