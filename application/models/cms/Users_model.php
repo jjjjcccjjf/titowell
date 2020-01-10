@@ -26,8 +26,47 @@ class Users_model extends Admin_core_model
   {
   	foreach ($res as $value) {
   		$value->profile_pic_path = (strpos($value->profile_pic_file, 'http') !== false) ? $value->profile_pic_file : base_url("$this->upload_dir/") . $value->profile_pic_file;
+      
+      $value->bmi_value = $this->getBmi($value);
+      $value->bmi_info = $this->getBmiInfo($value->bmi_value);
+
+      $value->tito = $this->getTito($value);
+
+      $value->wellness_program = $this->getWellnessProgram($value);
   	}
   	return $res;
+  }
+
+  function getBmi($user)
+  {
+    return round( ( ($this->getLatestWeight($user) / (pow(($user->height_in_feet * 12) + $user->height_in_inches, 2))) * 703.0 ) * 10.0 ) / 10.0;
+  }
+
+  function getLatestWeight($user)
+  {
+    $this->db->order_by('datetime', 'desc');
+    $weight_in_pounds = @$this->db->get_where('tito', ['user_id' => $user->id])->row()->weight_in_pounds;
+    if (!$weight_in_pounds) {
+      $weight_in_pounds = @$this->db->get_where('users', ['id' => $user->id])->row()->initial_weight_in_pounds;
+    }
+    return $weight_in_pounds;
+  }
+
+  function getBmiInfo($bmi_value)
+  {
+    return $this->db->get_where('bmi_info', "'{$bmi_value} '> min_bmi AND '{$bmi_value}' < max_bmi")->row();
+  }
+
+  function getTito($user)
+  {
+    $this->db->order_by('datetime', 'desc');
+    return $this->db->get_where('tito', ['user_id' => $user->id])->result();
+  }
+
+  function getWellnessProgram($user)
+  {
+    $this->db->order_by('datetime', 'desc');
+    return $this->db->get_where('wellness_program', ['user_id' => $user->id])->result();
   }
 
   function getTotalCount()

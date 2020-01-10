@@ -44,20 +44,27 @@
                         <td><?php echo $value->height_in_feet ?>' <?php echo $value->height_in_inches ?>"</td>
                         <td>
                           <button type="button"
-                          data-payload='<?php echo json_encode(['id' => $value->id, 'fname' => $value->fname, 'lname' => $value->lname, 'gender' => $value->gender, 'birth_date' => $value->birth_date, 'pin' => base64_decode($value->pin), 'profile_pic_path' => $value->profile_pic_path, 'initial_weight_in_pounds' => $value->initial_weight_in_pounds, 'height_in_feet' => $value->height_in_feet, 'height_in_inches' => $value->height_in_inches])?>'
+                          data-payload='<?php echo json_encode(['id' => $value->id, 'fname' => $value->fname, 'lname' => $value->lname, 'gender' => $value->gender, 'birth_date' => $value->birth_date, 'pin' => base64_decode($value->pin), 'profile_pic_path' => $value->profile_pic_path, 'initial_weight_in_pounds' => $value->initial_weight_in_pounds, 'height_in_feet' => $value->height_in_feet, 'height_in_inches' => $value->height_in_inches], JSON_HEX_QUOT|JSON_HEX_APOS)?>'
                           class="edit-row btn btn-info btn-xs">Edit</button>
                           <br >
                           <button style="margin-top:5px" type="button" data-id='<?php echo $value->id; ?>'
                             class="btn btn-delete btn-danger btn-xs">Delete</button>
                           <br >
-                          <button style="margin-top:5px" type="button" data-id='<?php echo $value->id; ?>'
-                            class="btn btn-success btn-xs">BMI</button>
+                          <button 
+                          data-payload='<?php echo json_encode($value->bmi_info ,JSON_HEX_QUOT|JSON_HEX_APOS) ?>'
+                          data-namey='<?php echo "$value->fname $value->lname" ?>'
+                          style="margin-top:5px" type="button" data-id='<?php echo $value->id; ?>'
+                            class="btn btn-success btn-xs btn-bmi">BMI</button>
                           <br >
-                          <button style="margin-top:5px" type="button" data-id='<?php echo $value->id; ?>'
-                            class="btn btn-success btn-xs">Attendance</button>
+                          <button 
+                          data-payload='<?php echo json_encode($value->wellness_program ,JSON_HEX_QUOT|JSON_HEX_APOS) ?>'
+                          style="margin-top:5px" type="button" data-id='<?php echo $value->id; ?>'
+                            class="btn btn-success btn-xs btn-wellness-program">Attendance</button>
                           <br >
-                          <button style="margin-top:5px" type="button" data-id='<?php echo $value->id; ?>'
-                            class="btn btn-success btn-xs">TiTo</button>
+                          <button 
+                          data-payload='<?php echo json_encode($value->tito ,JSON_HEX_QUOT|JSON_HEX_APOS) ?>'
+                          style="margin-top:5px" type="button" data-id='<?php echo $value->id; ?>'
+                            class="btn btn-success btn-xs btn-tito">TiTo</button>
                           </td>
                         </tr>
                       <?php endforeach; ?>
@@ -88,7 +95,7 @@
   </section>
 
   <!-- Modal -->
-  <div class="modal fade " id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal fade edit-modal" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
@@ -164,6 +171,38 @@
       </div>
     </div>
   </div>
+</div>
+  <!-- modal -->
+
+  <!-- Modal -->
+  <div class="modal fade in bmi-modal" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+          <h4 comments-o="modal-title">BMI Information</h4>
+        </div>
+        <div class="modal-body">
+
+          <h3 ><span id="bmi-name">-</span> <span style="font-weight: 100;">is in</span> <span id="bmi-label">-</span></h3>
+          <h5>(<span id="bmi-min"></span> - <span id="bmi-max"></span>)</h5>
+          <hr>
+
+          <h4>Description</h4>
+          <p style="text-align:justify" id="bmi-description">-</p>
+          <br>
+
+          <h4>Notes & Health Risks</h4>
+          <p style="text-align:justify" ><sub id="bmi-notes">-</sub></p>
+
+          <div class="modal-footer">
+            <button data-dismiss="modal" class="btn btn-default" type="button">Close</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
   <!-- modal -->
 
   <script src="<?php echo base_url('public/admin/js/custom/') ?>users_management.js"></script>

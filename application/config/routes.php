@@ -72,6 +72,7 @@ $route['api/activities/timestamp/(:num)'] = 'api/activities/timestamp/$1';
 # push routes
 $route['api/happiness-meter'] = 'api/happiness_meter';
 $route['api/pedometer-counter'] = 'api/pedometer_counter';
+$route['api/wellness-program'] = 'api/wellness_program';
 $route['api/picture-book'] = 'api/picture_book';
 $route['api/tito'] = 'api/tito';
 

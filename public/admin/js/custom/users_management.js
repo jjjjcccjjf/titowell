@@ -24,7 +24,7 @@ $(document).ready(function() {
       $('#profile_pic_modal_image').attr('src', payload.profile_pic_path)
 
       $('form').attr('action', base_url + 'cms/users/update/' + payload.id)
-      $('.modal').modal()
+      $('.edit-modal').modal()
     })
   
     // Adding
@@ -37,7 +37,23 @@ $(document).ready(function() {
       $('input[id=confirm_password]').attr("required", 'required')
   
       $('form').attr('action', base_url + 'cms/users/add')
-      $('.modal').modal()
+      $('.edit-modal').modal()
+    })  
+    
+    //BMI
+    $('.btn-bmi').on('click', function() {
+
+      let bmi = $(this).data('payload')
+      let namey = $(this).data('namey')
+
+      $('#bmi-name').empty().html(namey)
+      $('#bmi-label').empty().html(bmi.label)
+      $('#bmi-min').empty().html(bmi.min_bmi)
+      $('#bmi-max').empty().html(bmi.max_bmi)
+      $('#bmi-description').empty().html(bmi.description)
+      $('#bmi-notes').empty().html(bmi.notes_health_risks)
+  
+      $('.bmi-modal').modal()
     })
   
     //Deleting

@@ -18,7 +18,8 @@ class Users_model extends Crud_model
 	 	}
 
  		$this->db->order_by('fname', 'asc');
-	 	return $this->db->get('users')->result();
+	 	$res = $this->db->get('users')->result();
+	 	return $this->formatRes($res);
 	 }
 
 	 /**
@@ -29,5 +30,13 @@ class Users_model extends Crud_model
 	 function getGreatestTimestamp()
 	 {
 	 	return $this->db->query("SELECT GREATEST(MAX(created_at), MAX(updated_at)) as greatest FROM `users` LIMIT 1")->row()->greatest;
+	 }
+
+	 function formatRes(&$res)
+	 {
+	  	foreach ($res as $value) {
+	  		$value->pin = base64_decode($value->pin);
+	  	}
+	  	return $res;
 	 }
 }

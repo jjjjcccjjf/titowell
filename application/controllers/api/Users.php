@@ -39,14 +39,8 @@ class Users extends Crud_controller
 		 ];
 	 }
 
-	 $res = $this->formatRes($res);
 	 $this->response($res);
-  }  
-
-  function formatRes($res)
-  {
-  	return $res;
-  }
+  }   
 
 
 }
