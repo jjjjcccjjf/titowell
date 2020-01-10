@@ -59,6 +59,7 @@ class Users_model extends Admin_core_model
 
   function getTito($user)
   {
+    $this->db->select("DATE_FORMAT(datetime, '%b %d, %Y') as datetime_f, CONCAT(weight_in_pounds, ' lbs') as weight_in_pounds_f, DATE_FORMAT(datetime, '%W') as datetime_day_f, IF(type = 'ti', 'Timbang In', 'Timbang Out') as type_f");
     $this->db->order_by('datetime', 'desc');
     return $this->db->get_where('tito', ['user_id' => $user->id])->result();
   }

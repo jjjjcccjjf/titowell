@@ -55,6 +55,27 @@ $(document).ready(function() {
   
       $('.bmi-modal').modal()
     })
+
+    //TITO
+    $('.btn-tito').on('click', function(){ 
+        $('.modal tbody').empty(); //initialize tbody
+
+        let stringy = '';
+        let comment_data = $(this).data('payload')
+
+        for(let i = 0; i < comment_data.length; i++) {
+          stringy += `<tr>`
+          stringy += `<td>`+comment_data[i].datetime_f+`</td>`
+          stringy += `<td>`+comment_data[i].weight_in_pounds_f+`</td>`
+          stringy += `<td>`+comment_data[i].datetime_day_f+`</td>`
+          stringy += `<td>`+comment_data[i].type_f+`</td>`
+          stringy += `</tr>`
+        }
+
+        $('.modal tbody').html(stringy)
+        $('.tito-modal').modal()
+    })
+
   
     //Deleting
     $('.btn-delete').on('click', function(){
