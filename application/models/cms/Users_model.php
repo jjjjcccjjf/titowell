@@ -66,7 +66,9 @@ class Users_model extends Admin_core_model
 
   function getWellnessProgram($user)
   {
+    $this->db->select("DATE_FORMAT(datetime, '%b %d, %Y') as datetime_f, DATE_FORMAT(datetime, '%W') as datetime_day_f, activities.name as activity_name, comment, mood");
     $this->db->order_by('datetime', 'desc');
+    $this->db->join('activities', 'activities.id = wellness_program.activity_id', 'left');
     return $this->db->get_where('wellness_program', ['user_id' => $user->id])->result();
   }
 

@@ -239,5 +239,40 @@
 </div>
   <!-- modal -->
 
+   <!-- Modal -->
+  <div class="modal fade wellness-program-modal" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+          <h4 comments-o="modal-title">Wellness Program</h4>
+        </div>
+        <div class="modal-body">
+
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th>Activity</th>
+                <th>Date</th>
+                <th>Day</th>
+                <th>Mood</th>
+                <th>Comment</th>
+              </tr>
+            </thead>
+            <tbody>
+              <!-- tbody -->
+            </tbody>
+          </table>
+
+          <div class="modal-footer">
+            <button data-dismiss="modal" class="btn btn-default" type="button">Close</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+  <!-- modal -->
+
   <script src="<?php echo base_url('public/admin/js/custom/') ?>users_management.js"></script>
   <script src="<?php echo base_url('public/admin/js/custom/') ?>generic.js"></script>

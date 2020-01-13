@@ -58,22 +58,43 @@ $(document).ready(function() {
 
     //TITO
     $('.btn-tito').on('click', function(){ 
-        $('.modal tbody').empty(); //initialize tbody
+        $('.tito-modal tbody').empty(); //initialize tbody
 
         let stringy = '';
-        let comment_data = $(this).data('payload')
+        let payload = $(this).data('payload')
 
-        for(let i = 0; i < comment_data.length; i++) {
+        for(let i = 0; i < payload.length; i++) {
           stringy += `<tr>`
-          stringy += `<td>`+comment_data[i].datetime_f+`</td>`
-          stringy += `<td>`+comment_data[i].weight_in_pounds_f+`</td>`
-          stringy += `<td>`+comment_data[i].datetime_day_f+`</td>`
-          stringy += `<td>`+comment_data[i].type_f+`</td>`
+          stringy += `<td>`+payload[i].datetime_f+`</td>`
+          stringy += `<td>`+payload[i].weight_in_pounds_f+`</td>`
+          stringy += `<td>`+payload[i].datetime_day_f+`</td>`
+          stringy += `<td>`+payload[i].type_f+`</td>`
           stringy += `</tr>`
         }
 
         $('.modal tbody').html(stringy)
         $('.tito-modal').modal()
+    })
+
+    //Wellness program
+    $('.btn-wellness-program').on('click', function(){ 
+        $('.wellness-program-modal tbody').empty(); //initialize tbody
+
+        let stringy = '';
+        let payload = $(this).data('payload')
+
+        for(let i = 0; i < payload.length; i++) {
+          stringy += `<tr>`
+          stringy += `<td>`+payload[i].activity_name+`</td>`
+          stringy += `<td>`+payload[i].datetime_f+`</td>`
+          stringy += `<td>`+payload[i].datetime_day_f+`</td>`
+          stringy += `<td>`+payload[i].mood+`</td>`
+          stringy += `<td>`+payload[i].comment+`</td>`
+          stringy += `</tr>`
+        }
+
+        $('.modal tbody').html(stringy)
+        $('.wellness-program-modal').modal()
     })
 
   
