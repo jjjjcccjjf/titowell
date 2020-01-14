@@ -42,6 +42,7 @@ class Users extends Admin_core_controller {
 
   function add()
   {
+      $__offset = $this->input->post('__offset'); unset($_POST['__offset']);
       $_POST['pin'] = base64_encode($this->input->post('pin'));
       $data = array_merge($this->input->post(), $this->users_model->upload('profile_pic_file'));
 

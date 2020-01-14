@@ -15,6 +15,9 @@
   <link href="<?php echo base_url('public/admin/'); ?>css/bootstrap-reset.css" rel="stylesheet">
   <!--external css-->
   <link href="<?php echo base_url('public/admin/'); ?>assets/font-awesome/css/font-awesome.css" rel="stylesheet" />
+  <link href="<?php echo base_url('public/admin/'); ?>assets/fullcalendar/fullcalendar/bootstrap-fullcalendar.css" rel="stylesheet" />
+  <script src="https://unpkg.com/popper.js/dist/umd/popper.min.js"></script>
+  <script src="https://unpkg.com/tooltip.js/dist/umd/tooltip.min.js"></script>
 
   <!--right slidebar-->
   <link href="<?php echo base_url('public/admin/'); ?>css/slidebars.css" rel="stylesheet">
@@ -30,6 +33,10 @@
   <script src="<?php echo base_url('public/admin/'); ?>js/respond.min.js"></script>
   <![endif]-->
   <script src="<?php echo base_url('public/admin/'); ?>js/jquery.js"></script>
+  <script src="<?php echo base_url('public/admin/'); ?>js/jquery-ui-1.9.2.custom.min.js"></script>
+  <script src="<?php echo base_url('public/admin/'); ?>assets/fullcalendar/fullcalendar/fullcalendar.min.js"></script>
+
+
   <script type="text/javascript">
     const base_url = '<?php echo base_url(); ?>';
   </script>
