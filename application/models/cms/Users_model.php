@@ -28,7 +28,7 @@ class Users_model extends Admin_core_model
   		$value->profile_pic_path = (strpos($value->profile_pic_file, 'http') !== false) ? $value->profile_pic_file : base_url("$this->upload_dir/") . $value->profile_pic_file;
       
       $value->bmi_value = $this->getBmi($value);
-      $value->bmi_info = $this->getBmiInfo($value->bmi_value);
+      $value->bmi_info = $this->getBmiInfo($value);
 
       $value->tito = $this->getTito($value);
 
@@ -52,9 +52,9 @@ class Users_model extends Admin_core_model
     return $weight_in_pounds;
   }
 
-  function getBmiInfo($bmi_value)
+  function getBmiInfo($user)
   {
-    return $this->db->get_where('bmi_info', "'{$bmi_value} '> min_bmi AND '{$bmi_value}' < max_bmi")->row();
+    return $this->db->get_where('bmi_info', "'{$user->bmi_value} '> min_bmi AND '{$user->bmi_value}' < max_bmi")->row();
   }
 
   function getTito($user)
@@ -66,7 +66,7 @@ class Users_model extends Admin_core_model
 
   function getWellnessProgram($user)
   {
-    $this->db->select("DATE_FORMAT(datetime, '%b %d, %Y') as datetime_f, DATE_FORMAT(datetime, '%W') as datetime_day_f, activities.name as activity_name, comment, mood");
+    $this->db->select("activities.name as activity_name, DATE_FORMAT(datetime, '%b %d, %Y') as datetime_f, DATE_FORMAT(datetime, '%W') as datetime_day_f, mood, comment");
     $this->db->order_by('datetime', 'desc');
     $this->db->join('activities', 'activities.id = wellness_program.activity_id', 'left');
     return $this->db->get_where('wellness_program', ['user_id' => $user->id])->result();

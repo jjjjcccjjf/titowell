@@ -1,3 +1,9 @@
+<style>
+  @media print {
+    #main-content { display:none; }
+    #wellness-program-model { display:block !important; }
+  }
+</style>
 <section id="main-content">
   <section class="wrapper">
     <!-- page start-->
@@ -55,16 +61,20 @@
                           data-namey='<?php echo "$value->fname $value->lname" ?>'
                           style="margin-top:5px" type="button" data-id='<?php echo $value->id; ?>'
                             class="btn btn-success btn-xs btn-bmi">BMI</button>
+                          <a style="margin-top:5px" href="<?php echo base_url("cms/users/pdf_bmi/$value->id") ?>" target="_blank" class="btn btn-default btn-xs"><i class="fa fa-print"></i></a>
                           <br >
                           <button 
                           data-payload='<?php echo json_encode($value->wellness_program ,JSON_HEX_QUOT|JSON_HEX_APOS) ?>'
                           style="margin-top:5px" type="button" data-id='<?php echo $value->id; ?>'
                             class="btn btn-success btn-xs btn-wellness-program">Attendance</button>
+                          <a style="margin-top:5px" href="<?php echo base_url("cms/users/pdf_attendance/$value->id") ?>" target="_blank" class="btn btn-default btn-xs"><i class="fa fa-print"></i></a>
                           <br >
                           <button 
                           data-payload='<?php echo json_encode($value->tito ,JSON_HEX_QUOT|JSON_HEX_APOS) ?>'
                           style="margin-top:5px" type="button" data-id='<?php echo $value->id; ?>'
-                            class="btn btn-success btn-xs btn-tito">TiTo</button>
+                            class="btn btn-success btn-xs btn-tito">TiTo</button> 
+
+                            <a style="margin-top:5px" href="<?php echo base_url("cms/users/pdf_tito/$value->id") ?>" target="_blank" class="btn btn-default btn-xs"><i class="fa fa-print"></i></a>
                           </td>
                         </tr>
                       <?php endforeach; ?>
@@ -240,7 +250,7 @@
   <!-- modal -->
 
    <!-- Modal -->
-  <div class="modal fade wellness-program-modal" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal fade wellness-program-modal" id="wellness-program-model" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
