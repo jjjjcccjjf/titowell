@@ -17,9 +17,18 @@
             <?php endif; ?>
           </header>
           <div class="panel-body">
-            <p>
-              <button type="button" class="add-btn btn btn-success btn-sm">Add new</button>
-            </p>
+            <div class="row">
+              <div class="col-md-8">
+                <button type="button" class="add-btn btn btn-success btn-sm">Add new</button>
+              </div>
+              <div class="col-md-4">
+                <div class="form-group">
+                  <form method="GET" action="<?php echo base_url('cms/users') ?>">
+                    <input type="text" class="form-control" name="squery" placeholder="search name" value="<?php echo $this->input->get('squery') ?>">
+                  </form>
+                </div>
+              </div>
+            </div>
             <div class="table-responsive" style="overflow: hidden; outline: none;" tabindex="1">
               <table class="table table-bordered">
                 <thead>
