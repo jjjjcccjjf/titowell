@@ -8,6 +8,7 @@ class Users extends Admin_core_controller {
     parent::__construct();
 
     $this->load->model('cms/users_model');
+    $this->load->model('cms/wellness_program_model');
     $this->load->library("pagination");
     $this->load->library('user_agent');
   }
@@ -39,6 +40,7 @@ class Users extends Admin_core_controller {
     $pag_conf['reuse_query_string'] = true;
     $this->pagination->initialize($pag_conf);
     $data["pagination"] = $this->pagination->create_links();
+    $data['activities'] = $this->wellness_program_model->getActivities();
 
     $this->wrapper('cms/users', $data);
   }
@@ -90,7 +92,7 @@ class Users extends Admin_core_controller {
       if ($__offset) {
         $last_page = "index/{$__offset}";
       }
-      redirect('cms/users/' . $last_page);
+      redirect('cms/users/' . @$last_page);
   }
 
 #####################

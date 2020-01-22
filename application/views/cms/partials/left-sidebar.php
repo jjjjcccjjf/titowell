@@ -36,17 +36,24 @@
             <i class="fa fa-dashboard"></i>
             <span>Admin Management</span>
           </a>
+        </li>        
+        <li>
+          <a href="<?php echo base_url('cms/bmi_info') ?>"
+            class="<?php echo $this->uri->segment(1) === 'cms' && ($this->uri->segment(2) === 'bmi_info') ? 'active': ''; ?>">
+            <i class="fa fa-dashboard"></i>
+            <span>BMI Information</span>
+          </a>
         </li>
         <li>
           <a href="<?php echo base_url('cms/users') ?>"
-            class="<?php echo $this->uri->segment(1) === 'cms' && ($this->uri->segment(2) === null || $this->uri->segment(2) === 'users') ? 'active': ''; ?>">
+            class="<?php echo $this->uri->segment(1) === 'cms' && ($this->uri->segment(2) === 'users') ? 'active': ''; ?>">
             <i class="fa fa-dashboard"></i>
             <span>Users</span>
           </a>
         </li>
         <li>
           <a href="<?php echo base_url('cms/attendance') ?>"
-            class="<?php echo $this->uri->segment(1) === 'cms' && ($this->uri->segment(2) === null || $this->uri->segment(2) === 'attendance') ? 'active': ''; ?>">
+            class="<?php echo $this->uri->segment(1) === 'cms' && ($this->uri->segment(3) === null && $this->uri->segment(2) === 'attendance') ? 'active': ''; ?>">
             <i class="fa fa-book"></i>
             <span>Attendance</span>
           </a>

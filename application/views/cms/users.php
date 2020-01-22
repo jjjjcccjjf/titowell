@@ -51,7 +51,7 @@
                       <tr>
                         <th scope="row"><?php echo $i++ ?></th>
                         <td><?php echo $value->full_name ?></td>
-                        <td><span>********</span> <button class="btn btn-xs btn-info view-pin pull-right" data-pin="<?php echo base64_decode($value->pin) ?>"><i class="fa fa-eye"></i></button></td>
+                        <td><span style="display:block">********</span><button class="btn btn-xs btn-info view-pin" data-pin="<?php echo base64_decode($value->pin) ?>"><i class="fa fa-eye"></i></button></td>
                         <td><?php echo $value->gender ?></td>
                         <td><?php echo $value->birth_date_formatted ?></td>
                         <td><img src="<?php echo $value->profile_pic_path ?>" style="max-width:150px"></td>
@@ -82,12 +82,31 @@
                           data-payload='<?php echo json_encode($value->tito ,JSON_HEX_QUOT|JSON_HEX_APOS) ?>'
                           style="margin-top:5px" type="button" data-id='<?php echo $value->id; ?>'
                             class="btn btn-success btn-xs btn-tito">TiTo</button> 
+                          <a style="margin-top:5px" href="<?php echo base_url("cms/users/pdf_tito/$value->id") ?>" target="_blank" class="btn btn-default btn-xs"><i class="fa fa-print"></i></a>
+                          <br>
 
-                            <a style="margin-top:5px" href="<?php echo base_url("cms/users/pdf_tito/$value->id") ?>" target="_blank" class="btn btn-default btn-xs"><i class="fa fa-print"></i></a>
+                          <div class="btn-group" style="margin-top:5px">
+                              <button class="btn btn-xs btn-info" type="button" onclick="window.location.href = '<?php echo base_url("cms/attendance/user/$value->id") ?>?source_url=<?php echo base64_encode(current_url() . '?' . $_SERVER['QUERY_STRING']) ?>'">All Classes</button>
+                              <button data-toggle="dropdown" class="btn btn-xs  btn-info dropdown-toggle" type="button"><span class="caret"></span></button>
+                              <ul role="menu" class="dropdown-menu">
+                                <?php foreach ($activities as $activity): ?>
+                                  <li><a href="<?php echo base_url("cms/attendance/user/{$value->id}/$activity->id") ?>?source_url=<?php echo base64_encode(current_url() . '?' . $_SERVER['QUERY_STRING']) ?>"><?php echo $activity->name ?></a></li>
+                                <?php endforeach ?>
+                              </ul>
+                          </div><!-- /btn-group -->
+                          <br>
+
+                          <div class="btn-group" style="margin-top:5px">
+                              <button onclick="window.location.href = '<?php echo base_url("cms/attendance/progress/{$value->id}") ?>?source_url=<?php echo base64_encode(current_url() . '?' . $_SERVER['QUERY_STRING']) ?>'" class="btn btn-xs btn-warning" type="button">Progression</button>
+                              <button data-toggle="dropdown" class="btn btn-xs  btn-warning dropdown-toggle" type="button"><span class="caret"></span></button>
+                              <ul role="menu" class="dropdown-menu">
+                                  <li><a href="<?php echo base_url("cms/attendance/progress/{$value->id}/desc") ?>?source_url=<?php echo base64_encode(current_url() . '?' . $_SERVER['QUERY_STRING']) ?>">Most<br>Progressive</a></li>
+                                  <li><a href="<?php echo base_url("cms/attendance/progress/{$value->id}/asc") ?>?source_url=<?php echo base64_encode(current_url() . '?' . $_SERVER['QUERY_STRING']) ?>">Least<br>Progressive</a></li>
+                              </ul>
+                          </div><!-- /btn-group -->
                           </td>
                         </tr>
                       <?php endforeach; ?>
-
 
                     <?php else: ?>
                       <tr>

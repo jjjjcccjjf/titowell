@@ -22,6 +22,16 @@ class Users_model extends Admin_core_model
     return $res;
   }
 
+  function getProgress($user_id, $order = null)
+  {
+    if ($order) {
+      $order_str = "ORDER BY `weight_in_pounds` $order";
+    } else {
+      $order_str = "ORDER BY `datetime` DESC";
+    }
+    return $this->db->query("SELECT *, AVG(weight_in_pounds) as avg_weight_per_month, CONCAT(DATE_FORMAT(datetime, '%b'), ' ', YEAR(datetime)) as month_year FROM `tito` WHERE user_id = $user_id GROUP BY YEAR(datetime), MONTH(datetime) $order_str")->result_array();
+  }
+
   function formatRes(&$res)
   {
   	foreach ($res as $value) {

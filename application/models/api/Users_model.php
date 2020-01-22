@@ -6,7 +6,7 @@ class Users_model extends Crud_model
      function __construct()
 	 {
 	    parent::__construct();
- 
+ 		$this->upload_dir = 'uploads/users';
 	 }
 
 	 function getFromLastTimestamp($timestamp) {
@@ -36,6 +36,8 @@ class Users_model extends Crud_model
 	 {
 	  	foreach ($res as $value) {
 	  		$value->pin = base64_decode($value->pin);
+  			$value->profile_pic_path = (strpos($value->profile_pic_file, 'http') !== false) ? $value->profile_pic_file : base_url("$this->upload_dir/") . $value->profile_pic_file;
+
 	  	}
 	  	return $res;
 	 }

@@ -61,7 +61,7 @@
                   <?php $numItems = count($attendance); $i = 0; foreach($attendance as $value): ?>
                     {
                         title: '<?php echo $value->attendee_name ?>\n<?php echo $value->mood ?>',
-                        start: new Date(<?php echo $value->y ?>, <?php echo $value->m ?>, <?php echo $value->d ?>),
+                        start: new Date(<?php echo (int)$value->y ?>, <?php echo (int)$value->m ?>, <?php echo (int)$value->d ?>),
                         color: '<?php echo $value->activity_color ?> !important',
                         description: '<?php echo $value->comment ?>'
                     }
