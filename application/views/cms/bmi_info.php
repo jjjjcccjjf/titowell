@@ -5,15 +5,13 @@
       <div class="col-lg-12">
         <section class="panel">
           <header class="panel-heading">
-            Administrators
+            BMI Information
             <?php if ($flash_msg = $this->session->flash_msg): ?>
               <br><sub style="color: <?php echo $flash_msg['color'] ?>"><?php echo $flash_msg['message'] ?></sub>
             <?php endif; ?>
           </header>
           <div class="panel-body">
-            <p>
-              <button type="button" class="add-btn btn btn-success btn-sm">Add new</button>
-            </p>
+ 
             <div class="table-responsive" style="overflow: hidden; outline: none;" tabindex="1">
               <table class="table table-bordered">
                 <thead>
