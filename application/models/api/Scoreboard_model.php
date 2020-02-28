@@ -4,6 +4,7 @@ class Scoreboard_model extends CI_model
 {
 	 public $steps_needed = 6000;
 	 public $mood_needed = 3;
+	 public $floor_ideal_bmi = 18.5;
 
 	 public $pedometer_counter_score_percentage = 15;
 	 public $attendance_score_percentage = 20;
@@ -16,22 +17,51 @@ class Scoreboard_model extends CI_model
 	
      	$this->quarter = $this->getQuarterByMonth(date('m'));
 		$this->quarter_where = $this->getQuarterWhere($this->quarter);
+
+		$this->pedometer_counter_scores =	$this->getPedometerCounterScores();
+		$this->attendance_scores = $this->getAttendanceScores();
+		$this->bmi_scores = $this->getBMIScores();
+		$this->happiness_meter_scores = $this->getHappinessMeterScores();
+
 	 }
 
-/*	 function buildScoreboard()
+	 function getSingleUserCiteriaScore($criteria = 'bmi_scores', $user_id)
 	 {
-		$pedometer_counter_scores =	$this->getPedometerCounterScores();
-		$attendance_scores = $this->getAttendanceScores();
-		$bmi_scores = $this->getBMIScores();
-		$happiness_meter_scores = $this->getHappinessMeterScores();
+	 	#other values, 'pedometer_counter', 'attendance', 'bmi', 'happiness_meter'
+	 	foreach ($this->$criteria as $key => $value) {
+	 		if ($value->user_id == $user_id) {
+	 			return $value->score;
+	 		}
+	 	}
 
+	 	return 0; # if user is not existing
+	 }
+
+	 function buildScoreboard($target = 'all')
+	 {
+	 	if ($target!= 'all') {
+	 		$this->db->where('gender', $target); # 'male' or 'female' only
+	 	}
 		$users = $this->db->get('users')->result();
 
 		foreach ($users as $key => $value) {
-			$value->
+			$value->total_score = 
+				$this->getSingleUserCiteriaScore('bmi_scores', $value->id) +
+				$this->getSingleUserCiteriaScore('pedometer_counter_scores', $value->id) +
+				$this->getSingleUserCiteriaScore('attendance_scores', $value->id) +
+				$this->getSingleUserCiteriaScore('happiness_meter_scores', $value->id);
 		}
 
-	 }*/
+		usort($users, function($a, $b)
+		{
+		    return strcmp($a->total_score, $b->total_score);
+		});
+
+		$users = array_reverse($users); 
+		return $users;
+	 }
+
+
 
 	 function getPedometerCounterScores()
 	 {
@@ -80,8 +110,66 @@ class Scoreboard_model extends CI_model
 
 	 function getBMIScores()
 	 {
+
+	 	/* 
+		SELECT y.id, y.user_id, CONCAT(z.fname, ' ', z.lname) as full_name, z.fname, z.lname, z.gender, 	z.birth_date, z.initial_weight_in_pounds, z.height_in_feet, z.height_in_inches, 
+		((z.height_in_feet * 12) + z.height_in_inches) as total_height_in_inches,
+		ROUND(18.5 * POWER((z.height_in_feet * 12) + z.height_in_inches, 2) / 703) as ideal_weight,
+		ABS(y.weight_in_pounds - ROUND(18.5 * POWER((z.height_in_feet * 12) + z.height_in_inches, 2) / 703)) as target_weight,
+		((ABS(((MAX(target_weight) / y.weight_in_pounds) * 100) - 100) * 50) / 100) as score,
+		y.datetime, y.weight_in_pounds, y.type, y.created_at, y.updated_at 
+		FROM (
+		    SELECT id, user_id, MAX(datetime) as datetime, weight_in_pounds, type, created_at, updated_at FROM tito GROUP BY user_id
+		) as x
+		INNER JOIN tito as y
+		ON x.user_id = y.user_id AND
+		x.datetime = y.datetime
+		LEFT JOIN users as z 
+		ON y.user_id = z.id
+		ORDER BY target_weight ASC
+	 	 */
 	 	
-	 }
+	 	# current weight - ideal
+	 	# pag underweight
+	 	# dun sa lowest range ng Healthy
+	 	# pag overweight
+	 	# dun sa lowest range ng Healthy
+		# ((ABS(((MAX(target_weight) / y.weight_in_pounds) * 100) - 100) * 50) / 100) as score,
+	 	
+	 	$floor_ideal_bmi = $this->floor_ideal_bmi;
+ 		$res = $this->db->query("
+			SELECT y.id, y.user_id, CONCAT(z.fname, ' ', z.lname) as full_name, z.fname, z.lname, z.gender, z.birth_date, z.initial_weight_in_pounds, z.height_in_feet, z.height_in_inches, 
+			((z.height_in_feet * 12) + z.height_in_inches) as total_height_in_inches,
+			ROUND(18.5 * POWER((z.height_in_feet * 12) + z.height_in_inches, 2) / 703) as ideal_weight,
+			ABS(y.weight_in_pounds - ROUND($floor_ideal_bmi * POWER((z.height_in_feet * 12) + z.height_in_inches, 2) / 703)) as target_weight,
+			y.datetime, y.weight_in_pounds, y.type, y.created_at, y.updated_at 
+			FROM (
+			    SELECT id, user_id, MAX(datetime) as datetime, weight_in_pounds, type, created_at, updated_at FROM tito GROUP BY user_id
+			) as x
+			INNER JOIN tito as y
+			ON x.user_id = y.user_id AND
+			x.datetime = y.datetime
+			LEFT JOIN users as z 
+			ON y.user_id = z.id
+			ORDER BY target_weight ASC")->result();
+
+ 		if (!$res) {
+ 			return [];
+ 		}
+
+ 		$max_target_weight = array_reduce($res, function($a, $b){
+		  return $a ? ($a->target_weight > $b->target_weight ? $a : $b) : $b;
+		})->target_weight; # get target weight maximum
+
+ 		foreach ($res as $key => $value) {
+		// var_dump($max_target_weight, $value->target_weight); die();
+		// ((ABS(((MAX(target_weight) / y.weight_in_pounds) * 100) - 100) * 50) / 100) as score,
+			$rate = $value->target_weight ?($max_target_weight / $value->target_weight) : 2;
+ 			$value->score = abs((($rate * 100) - 100) * $this->bmi_score_percentage) / 100;
+ 		}
+
+ 		return $res;
+	 }	
 
 	 function getHappinessMeterScores()
 	 {

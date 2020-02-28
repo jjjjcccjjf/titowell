@@ -14,7 +14,7 @@ class Scoreboard extends Crud_controller
   {
   	 $res = (object)[];
 
-	 $data = $this->scoreboard_model->getHappinessMeterScores();
+	 $data = $this->scoreboard_model->buildScoreboard('male');
 
 	 $res->data = $data;
 	 $res->meta = (object)[
