@@ -10,11 +10,11 @@ class Scoreboard extends Crud_controller
   }
 
 	
-  function index_get()
+  function index_get($gender = 'all')
   {
   	 $res = (object)[];
 
-	 $data = $this->scoreboard_model->buildScoreboard('male');
+	 $data = $this->scoreboard_model->buildScoreboard($gender);
 
 	 $res->data = $data;
 	 $res->meta = (object)[

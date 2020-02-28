@@ -58,6 +58,13 @@
             <span>Attendance</span>
           </a>
         </li>
+        <li>
+          <a href="<?php echo base_url('cms/scoreboard') ?>"
+            class="<?php echo $this->uri->segment(1) === 'cms' && ($this->uri->segment(3) === null && $this->uri->segment(2) === 'scoreboard') ? 'active': ''; ?>">
+            <i class="fa fa-calendar"></i>
+            <span>Scoreboard</span>
+          </a>
+        </li>
       <!--   <li class="sub-menu">
 
           <a href="javascript:;" class="<?php echo (in_array($this->uri->segment(2), ['news', 'events', 'about']))  ? 'active': ''; ?>">
