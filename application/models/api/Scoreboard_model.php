@@ -45,11 +45,16 @@ class Scoreboard_model extends CI_model
 		$users = $this->db->get('users')->result();
 
 		foreach ($users as $key => $value) {
+			$value->bmi_score = $this->getSingleUserCiteriaScore('bmi_scores', $value->id);
+			$value->pedometer_counter_score = $this->getSingleUserCiteriaScore('pedometer_counter_scores', $value->id);
+			$value->attendance_score = $this->getSingleUserCiteriaScore('attendance_scores', $value->id);
+			$value->happiness_meter_score = $this->getSingleUserCiteriaScore('happiness_meter_scores', $value->id);
+
 			$value->total_score = 
-				$this->getSingleUserCiteriaScore('bmi_scores', $value->id) +
-				$this->getSingleUserCiteriaScore('pedometer_counter_scores', $value->id) +
-				$this->getSingleUserCiteriaScore('attendance_scores', $value->id) +
-				$this->getSingleUserCiteriaScore('happiness_meter_scores', $value->id);
+				$value->bmi_score +
+				$value->pedometer_counter_score +
+				$value->attendance_score +
+				$value->happiness_meter_score;
 		}
 
 		usort($users, function($a, $b)
