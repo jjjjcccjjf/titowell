@@ -16,7 +16,7 @@ class Scoreboard_model extends CI_model
 	    parent::__construct();
 
 		$this->year = $this->input->get('year')?: date('Y');
-    	$this->quarter = $this->input->get('quarter')?: $this->scoreboard_model->getQuarterByMonth(date('m'));
+    	$this->quarter = $this->input->get('quarter')?: $this->getQuarterByMonth(date('m'));
 		$this->quarter_where = $this->getQuarterWhere($this->quarter, $this->year);
 
 		$this->pedometer_counter_scores =	$this->getPedometerCounterScores();
