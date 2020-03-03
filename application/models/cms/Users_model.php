@@ -15,8 +15,9 @@ class Users_model extends Admin_core_model
   public function all($offset = 0)
   {
 
-  	$this->db->select("users.*, CONCAT(fname, ' ', lname) as full_name, DATE_FORMAT(birth_date, '%b %d, %Y') as birth_date_formatted");
+  	$this->db->select("users.*, CONCAT(fname, ' (', lname, ')') as full_name, DATE_FORMAT(birth_date, '%b %d, %Y') as birth_date_formatted");
     $this->db->limit($this->per_page, $offset);
+    $this->db->order_by('fname', 'asc');
   	$res = $this->db->get($this->table)->result();
     $res = $this->formatRes($res);
     return $res;
@@ -43,6 +44,8 @@ class Users_model extends Admin_core_model
       $value->tito = $this->getTito($value);
 
       $value->wellness_program = $this->getWellnessProgram($value);
+      
+      $value->pedometer_counter = $this->getPedometerCounter($value);
   	}
   	return $res;
   }
@@ -72,6 +75,13 @@ class Users_model extends Admin_core_model
     $this->db->select("DATE_FORMAT(datetime, '%b %d, %Y') as datetime_f, CONCAT(weight_in_pounds, ' lbs') as weight_in_pounds_f, DATE_FORMAT(datetime, '%W') as datetime_day_f, IF(type = 'ti', 'Timbang In', 'Timbang Out') as type_f");
     $this->db->order_by('datetime', 'desc');
     return $this->db->get_where('tito', ['user_id' => $user->id])->result();
+  }
+
+  function getPedometerCounter($user)
+  {
+    $this->db->select("*, DATE_FORMAT(datetime, '%b %d, %Y') as datetime_f, DATE_FORMAT(datetime, '%W') as datetime_day_f");
+    $this->db->order_by('datetime', 'desc');
+    return $this->db->get_where('pedometer_counter', ['user_id' => $user->id])->result();
   }
 
   function getWellnessProgram($user)

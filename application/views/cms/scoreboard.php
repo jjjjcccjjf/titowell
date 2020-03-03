@@ -10,14 +10,25 @@
     <div class="row">
       <div class="col-lg-12">
         <h4>Scoreboard</h4>
+        <form method="GET">
+          <div class="form-group col-md-2">
+            <label>Quarter</label>
+            <input class="form-control" type="number" step="1" name="quarter" min="1" max="4" value="<?php echo $quarter ?>" placeholder="quarter">
+          </div>
+          <div class="form-group col-md-2">
+            <label>Year</label>
+            <input class="form-control" type="number" min="1900" max="2099" step="1" value="<?php echo $year ?>" name="year">
+          </div>
+            <input style="margin-top: 25px" type="submit" value="Apply filters" class="btn btn-sm btn-warning">
+        </form>
       </div>
       <div class="col-lg-12">
         <section class="panel">
-          <header class="panel-heading">
+          <header class="panel-heading" >
             All Members
             <span class="tools pull-right">
               <button class="btn btn-success btn-xs show-me-all" data-typy="all">Show details</button>
-              <a href="javascript:;" class="fa fa-chevron-down"></a>
+              <a href="javascript:;" class="fa fa-chevron-down down-all"></a>
             </span>
           </header>
           <div class="panel-body">
@@ -44,6 +55,7 @@
                         <tr>
                           <td><?php echo $rank++; ?></td>
                           <td><a href="<?php echo base_url('cms/users?squery=' . $value->fname) ?>"><?php echo $value->fname ?> <button class="fa fa-link btn btn-xs btn-info"></button></a></td>
+                          <td class="hyde hide-me-all"><?php echo round($value->bmi_score, 3) ?></td>
                           <td class="hyde hide-me-all"><?php echo round($value->pedometer_counter_score, 3) ?></td>
                           <td class="hyde hide-me-all"><?php echo round($value->attendance_score, 3) ?></td>
                           <td class="hyde hide-me-all"><?php echo round($value->happiness_meter_score, 3) ?></td>
@@ -70,7 +82,7 @@
               Male Members
               <span class="tools pull-right">
               <button class="btn btn-success btn-xs show-me-male" data-typy="male">Show details</button>
-                <a href="javascript:;" class="fa fa-chevron-down"></a>
+                <a href="javascript:;" class="fa fa-chevron-down down-male"></a>
               </span>
             </header>
             <div class="panel-body">
@@ -93,11 +105,12 @@
                     </tr>
                   </thead>
                   <tbody>
-                    <?php if (count($all) > 0 ): ?>
-                      <?php $rank = 1; foreach ($all as $key => $value): ?>
+                    <?php if (count($male) > 0 ): ?>
+                      <?php $rank = 1; foreach ($male as $key => $value): ?>
                         <tr>
                           <td><?php echo $rank++; ?></td>
                           <td><a href="<?php echo base_url('cms/users?squery=' . $value->fname) ?>"><?php echo $value->fname ?> <button class="fa fa-link btn btn-xs btn-info"></button></a></td>
+                          <td class="hyde hide-me-male"><?php echo round($value->bmi_score, 3) ?></td>
                           <td class="hyde hide-me-male"><?php echo round($value->pedometer_counter_score, 3) ?></td>
                           <td class="hyde hide-me-male"><?php echo round($value->attendance_score, 3) ?></td>
                           <td class="hyde hide-me-male"><?php echo round($value->happiness_meter_score, 3) ?></td>
@@ -124,7 +137,7 @@
               Female Members
               <span class="tools pull-right">
               <button class="btn btn-success btn-xs show-me-female" data-typy="female">Show details</button>
-                <a href="javascript:;" class="fa fa-chevron-down"></a>
+                <a href="javascript:;" class="fa fa-chevron-down down-female"></a>
               </span>
             </header>
             <div class="panel-body">
@@ -145,11 +158,12 @@
                     </tr>
                   </thead>
                   <tbody>
-                    <?php if (count($all) > 0 ): ?>
-                      <?php $rank = 1; foreach ($all as $key => $value): ?>
+                    <?php if (count($female) > 0 ): ?>
+                      <?php $rank = 1; foreach ($female as $key => $value): ?>
                         <tr>
                           <td><?php echo $rank++; ?></td>
                           <td><a href="<?php echo base_url('cms/users?squery=' . $value->fname) ?>"><?php echo $value->fname ?> <button class="fa fa-link btn btn-xs btn-info"></button></a></td>
+                          <td class="hyde hide-me-female"><?php echo round($value->bmi_score, 3) ?></td>
                           <td class="hyde hide-me-female"><?php echo round($value->pedometer_counter_score, 3) ?></td>
                           <td class="hyde hide-me-female"><?php echo round($value->attendance_score, 3) ?></td>
                           <td class="hyde hide-me-female"><?php echo round($value->happiness_meter_score, 3) ?></td>
@@ -183,6 +197,8 @@
 
        $('.hide-me-' + typy).toggle(200);
     })
+
+    $('.down-female, .down-male, .down-all').trigger('click')
   });  
   </script>
 

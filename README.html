@@ -1066,13 +1066,14 @@ body .markdown-body
 <li><a href="#pedometer-counter">Pedometer counter</a></li>
 <li><a href="#picture-book">Picture book</a></li>
 <li><a href="#tito">TiTo</a></li>
-<li><a href="#wellness-program">Welness program</a></li>
+<li><a href="#wellness-program">Wellness program</a></li>
 </ul>
 </li>
 <li><strong>Pull routes</strong><ul>
 <li><a href="#users">Users</a></li>
 <li><a href="#activities">Activities</a></li>
 <li><a href="#bmi-info">BMI Info</a></li>
+<li><a href="#scoreboard">Scoreboard</a></li>
 </ul>
 </li>
 </ol>
@@ -1206,7 +1207,7 @@ body .markdown-body
 <td>pic_file</td>
 <td>yes</td>
 <td>file</td>
-<td>pag same filename parin yung sinend, iiignore ko na. won&rsquo;t upload again. will just use reference from the previous pic file</td>
+<td>if same filename, just overwrite</td>
 <td>cutepicture.jpg</td>
 </tr>
 </tbody>
@@ -1318,7 +1319,7 @@ body .markdown-body
 <td>mood</td>
 <td>yes</td>
 <td>int</td>
-<td>1, 2, 3, 4, 5</td>
+<td>1, 2, 3, 4, 5 (worst-&gt;best)</td>
 <td>5</td>
 </tr>
 <tr>
@@ -1352,10 +1353,11 @@ body .markdown-body
       <span class="s2">&quot;id&quot;</span><span class="o">:</span> <span class="s2">&quot;3&quot;</span><span class="p">,</span>
       <span class="s2">&quot;fname&quot;</span><span class="o">:</span> <span class="s2">&quot;Delta&quot;</span><span class="p">,</span>
       <span class="s2">&quot;lname&quot;</span><span class="o">:</span> <span class="s2">&quot;One&quot;</span><span class="p">,</span>
-      <span class="s2">&quot;pin&quot;</span><span class="o">:</span> <span class="s2">&quot;$2y$10$WOZLRKM7KCfHaA9qOiLZROkwGeN.9SNQITgEDZYgyWEM.zh\/pe.O2&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;pin&quot;</span><span class="o">:</span> <span class="s2">&quot;12345&quot;</span><span class="p">,</span>
       <span class="s2">&quot;gender&quot;</span><span class="o">:</span> <span class="s2">&quot;male&quot;</span><span class="p">,</span>
       <span class="s2">&quot;birth_date&quot;</span><span class="o">:</span> <span class="s2">&quot;1994-12-24&quot;</span><span class="p">,</span>
       <span class="s2">&quot;profile_pic_file&quot;</span><span class="o">:</span> <span class="s2">&quot;https:\/\/robohash.org\/delta.png?set=set4&amp;size=150x150&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;profile_pic_path&quot;</span><span class="o">:</span><span class="s2">&quot;http:\/\/titowell.betaprojex.com\/users\/1579532454_frogwidhair.jpg&quot;</span><span class="p">,</span>
       <span class="s2">&quot;initial_weight_in_pounds&quot;</span><span class="o">:</span> <span class="s2">&quot;140&quot;</span><span class="p">,</span>
       <span class="s2">&quot;height_in_feet&quot;</span><span class="o">:</span> <span class="s2">&quot;5&quot;</span><span class="p">,</span>
       <span class="s2">&quot;height_in_inches&quot;</span><span class="o">:</span> <span class="s2">&quot;8&quot;</span><span class="p">,</span>
@@ -1366,10 +1368,11 @@ body .markdown-body
       <span class="s2">&quot;id&quot;</span><span class="o">:</span> <span class="s2">&quot;1&quot;</span><span class="p">,</span>
       <span class="s2">&quot;fname&quot;</span><span class="o">:</span> <span class="s2">&quot;Endan&quot;</span><span class="p">,</span>
       <span class="s2">&quot;lname&quot;</span><span class="o">:</span> <span class="s2">&quot;Pendleton&quot;</span><span class="p">,</span>
-      <span class="s2">&quot;pin&quot;</span><span class="o">:</span> <span class="s2">&quot;$2y$10$WOZLRKM7KCfHaA9qOiLZROkwGeN.9SNQITgEDZYgyWEM.zh\/pe.O2&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;pin&quot;</span><span class="o">:</span> <span class="s2">&quot;12345&quot;</span><span class="p">,</span>
       <span class="s2">&quot;gender&quot;</span><span class="o">:</span> <span class="s2">&quot;male&quot;</span><span class="p">,</span>
       <span class="s2">&quot;birth_date&quot;</span><span class="o">:</span> <span class="s2">&quot;1994-12-10&quot;</span><span class="p">,</span>
       <span class="s2">&quot;profile_pic_file&quot;</span><span class="o">:</span> <span class="s2">&quot;https:\/\/robohash.org\/endan.png?set=set4&amp;size=150x150&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;profile_pic_path&quot;</span><span class="o">:</span><span class="s2">&quot;http:\/\/titowell.betaprojex.com\/users\/1579532454_frogwidhair.jpg&quot;</span><span class="p">,</span>
       <span class="s2">&quot;initial_weight_in_pounds&quot;</span><span class="o">:</span> <span class="s2">&quot;140&quot;</span><span class="p">,</span>
       <span class="s2">&quot;height_in_feet&quot;</span><span class="o">:</span> <span class="s2">&quot;5&quot;</span><span class="p">,</span>
       <span class="s2">&quot;height_in_inches&quot;</span><span class="o">:</span> <span class="s2">&quot;7&quot;</span><span class="p">,</span>
@@ -1380,10 +1383,11 @@ body .markdown-body
       <span class="s2">&quot;id&quot;</span><span class="o">:</span> <span class="s2">&quot;2&quot;</span><span class="p">,</span>
       <span class="s2">&quot;fname&quot;</span><span class="o">:</span> <span class="s2">&quot;Jhondz&quot;</span><span class="p">,</span>
       <span class="s2">&quot;lname&quot;</span><span class="o">:</span> <span class="s2">&quot;Anib&quot;</span><span class="p">,</span>
-      <span class="s2">&quot;pin&quot;</span><span class="o">:</span> <span class="s2">&quot;$2y$10$WOZLRKM7KCfHaA9qOiLZROkwGeN.9SNQITgEDZYgyWEM.zh\/pe.O2&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;pin&quot;</span><span class="o">:</span> <span class="s2">&quot;12345&quot;</span><span class="p">,</span>
       <span class="s2">&quot;gender&quot;</span><span class="o">:</span> <span class="s2">&quot;male&quot;</span><span class="p">,</span>
       <span class="s2">&quot;birth_date&quot;</span><span class="o">:</span> <span class="s2">&quot;1994-12-24&quot;</span><span class="p">,</span>
       <span class="s2">&quot;profile_pic_file&quot;</span><span class="o">:</span> <span class="s2">&quot;https:\/\/robohash.org\/jhondz.png?set=set4&amp;size=150x150&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;profile_pic_path&quot;</span><span class="o">:</span><span class="s2">&quot;http:\/\/titowell.betaprojex.com\/users\/1579532454_frogwidhair.jpg&quot;</span><span class="p">,</span>
       <span class="s2">&quot;initial_weight_in_pounds&quot;</span><span class="o">:</span> <span class="s2">&quot;140&quot;</span><span class="p">,</span>
       <span class="s2">&quot;height_in_feet&quot;</span><span class="o">:</span> <span class="s2">&quot;5&quot;</span><span class="p">,</span>
       <span class="s2">&quot;height_in_inches&quot;</span><span class="o">:</span> <span class="s2">&quot;7&quot;</span><span class="p">,</span>
@@ -1540,4 +1544,59 @@ body .markdown-body
     <span class="s2">&quot;last_update_unix&quot;</span><span class="o">:</span> <span class="mi">1575896586</span>
   <span class="p">}</span>
 <span class="p">}</span> 
+</pre></div>
+
+<h3 id="scoreboard">Scoreboard<a class="headerlink" href="#scoreboard" title="Permanent link"></a></h3>
+<p>GET <code>api/scoreboard/:type</code><br />
+* <code>type</code> could be <code>male</code>, <code>female</code>, or <code>all</code>.<br />
+* The order in which the response is returned is <strong><em>descending</em></strong> by <strong><em>total_score</em></strong>. So the foremost object in the data array is Rank #1, and the second is Rank #2, and so on.</p>
+<h5 id="response_9">Response<a class="headerlink" href="#response_9" title="Permanent link"></a></h5>
+<div class="codehilite"><pre><span class="mi">200</span> <span class="nx">OK</span>
+<span class="p">{</span>
+  <span class="s2">&quot;data&quot;</span><span class="o">:</span> <span class="p">[</span>
+    <span class="p">{</span>
+      <span class="s2">&quot;id&quot;</span><span class="o">:</span> <span class="s2">&quot;1&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;fname&quot;</span><span class="o">:</span> <span class="s2">&quot;Agu&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;lname&quot;</span><span class="o">:</span> <span class="s2">&quot;Agustin G. Moquite&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;pin&quot;</span><span class="o">:</span> <span class="s2">&quot;MjIxMzE=&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;gender&quot;</span><span class="o">:</span> <span class="s2">&quot;male&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;birth_date&quot;</span><span class="o">:</span> <span class="s2">&quot;1960-08-03&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;profile_pic_file&quot;</span><span class="o">:</span> <span class="s2">&quot;1583139622_Agu.JPG&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;initial_weight_in_pounds&quot;</span><span class="o">:</span> <span class="s2">&quot;153&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;height_in_feet&quot;</span><span class="o">:</span> <span class="s2">&quot;5&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;height_in_inches&quot;</span><span class="o">:</span> <span class="s2">&quot;4&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;created_at&quot;</span><span class="o">:</span> <span class="s2">&quot;2020-03-02 17:00:22&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;updated_at&quot;</span><span class="o">:</span> <span class="s2">&quot;0000-00-00 00:00:00&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;bmi_score&quot;</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
+      <span class="s2">&quot;pedometer_counter_score&quot;</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
+      <span class="s2">&quot;attendance_score&quot;</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
+      <span class="s2">&quot;happiness_meter_score&quot;</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
+      <span class="s2">&quot;total_score&quot;</span><span class="o">:</span> <span class="mi">0</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+      <span class="s2">&quot;id&quot;</span><span class="o">:</span> <span class="s2">&quot;13&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;fname&quot;</span><span class="o">:</span> <span class="s2">&quot;Donan&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;lname&quot;</span><span class="o">:</span> <span class="s2">&quot;Donan L. Sazon&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;pin&quot;</span><span class="o">:</span> <span class="s2">&quot;MjQxMjc=&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;gender&quot;</span><span class="o">:</span> <span class="s2">&quot;male&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;birth_date&quot;</span><span class="o">:</span> <span class="s2">&quot;1966-01-20&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;profile_pic_file&quot;</span><span class="o">:</span> <span class="s2">&quot;1583143164_Donan.JPG&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;initial_weight_in_pounds&quot;</span><span class="o">:</span> <span class="s2">&quot;151.4&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;height_in_feet&quot;</span><span class="o">:</span> <span class="s2">&quot;5&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;height_in_inches&quot;</span><span class="o">:</span> <span class="s2">&quot;3&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;created_at&quot;</span><span class="o">:</span> <span class="s2">&quot;2020-03-02 17:55:07&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;updated_at&quot;</span><span class="o">:</span> <span class="s2">&quot;2020-03-02 17:59:24&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;bmi_score&quot;</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
+      <span class="s2">&quot;pedometer_counter_score&quot;</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
+      <span class="s2">&quot;attendance_score&quot;</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
+      <span class="s2">&quot;happiness_meter_score&quot;</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
+      <span class="s2">&quot;total_score&quot;</span><span class="o">:</span> <span class="mi">0</span>
+    <span class="p">}</span> 
+  <span class="p">],</span>
+  <span class="s2">&quot;meta&quot;</span><span class="o">:</span> <span class="p">{</span>
+    <span class="s2">&quot;message&quot;</span><span class="o">:</span> <span class="s2">&quot;Got all data&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;code&quot;</span><span class="o">:</span> <span class="s2">&quot;ok&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;status&quot;</span><span class="o">:</span> <span class="mi">200</span>
+  <span class="p">}</span>
+<span class="p">}</span>
 </pre></div></article></body></html>

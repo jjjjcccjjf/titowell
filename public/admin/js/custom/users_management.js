@@ -76,6 +76,24 @@ $(document).ready(function() {
         $('.tito-modal').modal()
     })
 
+    //Pedometer
+    $('.btn-pedometer').on('click', function(){ 
+        $('.pedometer-modal tbody').empty(); //initialize tbody
+
+        let stringy = '';
+        let payload = $(this).data('payload')
+
+        for(let i = 0; i < payload.length; i++) {
+          stringy += `<tr>`
+          stringy += `<td>`+payload[i].datetime_f+`</td>`
+          stringy += `<td>`+payload[i].step_count+`</td>`
+          stringy += `</tr>`
+        }
+
+        $('.modal tbody').html(stringy)
+        $('.pedometer-modal').modal()
+    })
+
     //Wellness program
     $('.btn-wellness-program').on('click', function(){ 
         $('.wellness-program-modal tbody').empty(); //initialize tbody

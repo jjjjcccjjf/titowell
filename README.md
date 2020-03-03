@@ -15,6 +15,7 @@
     + [Users](#users)
     + [Activities](#activities)
     + [BMI Info](#bmi-info)
+    + [Scoreboard](#scoreboard)
    
 
 ### Happiness meter
@@ -359,4 +360,61 @@ GET `api/activities/timestamp/:unix_timestamp`
 } 
 ```
 
+### Scoreboard
+GET `api/scoreboard/:type`  
+* `type` could be `male`, `female`, or `all`.  
+* The order in which the response is returned is ***descending*** by ***total_score***. So the foremost object in the data array is Rank #1, and the second is Rank #2, and so on.
+
+##### Response
+```javascript
+200 OK
+{
+  "data": [
+    {
+      "id": "1",
+      "fname": "Agu",
+      "lname": "Agustin G. Moquite",
+      "pin": "MjIxMzE=",
+      "gender": "male",
+      "birth_date": "1960-08-03",
+      "profile_pic_file": "1583139622_Agu.JPG",
+      "initial_weight_in_pounds": "153",
+      "height_in_feet": "5",
+      "height_in_inches": "4",
+      "created_at": "2020-03-02 17:00:22",
+      "updated_at": "0000-00-00 00:00:00",
+      "bmi_score": 0,
+      "pedometer_counter_score": 0,
+      "attendance_score": 0,
+      "happiness_meter_score": 0,
+      "total_score": 0
+    },
+    {
+      "id": "13",
+      "fname": "Donan",
+      "lname": "Donan L. Sazon",
+      "pin": "MjQxMjc=",
+      "gender": "male",
+      "birth_date": "1966-01-20",
+      "profile_pic_file": "1583143164_Donan.JPG",
+      "initial_weight_in_pounds": "151.4",
+      "height_in_feet": "5",
+      "height_in_inches": "3",
+      "created_at": "2020-03-02 17:55:07",
+      "updated_at": "2020-03-02 17:59:24",
+      "bmi_score": 0,
+      "pedometer_counter_score": 0,
+      "attendance_score": 0,
+      "happiness_meter_score": 0,
+      "total_score": 0
+    } 
+  ],
+  "meta": {
+    "message": "Got all data",
+    "code": "ok",
+    "status": 200
+  }
+}
+```
+ 
 

@@ -41,7 +41,7 @@
                     <th>Picture</th>
                     <th>Initial weight (lbs)</th>
                     <th>Height (ft,in)</th>
-                    <th>Action</th>
+                    <th style="min-width:141px">Action</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -54,7 +54,8 @@
                         <td><span style="display:block">********</span><button class="btn btn-xs btn-info view-pin" data-pin="<?php echo base64_decode($value->pin) ?>"><i class="fa fa-eye"></i></button></td>
                         <td><?php echo $value->gender ?></td>
                         <td><?php echo $value->birth_date_formatted ?></td>
-                        <td><img src="<?php echo $value->profile_pic_path ?>" style="max-width:150px"></td>
+                        <td><img src="<?php echo $value->profile_pic_path ?>" style="max-width:150px" 
+                          onerror="this.src='<?php echo base_url('public/admin/img/account.png') ?>'"></td>
                         <td><?php echo $value->initial_weight_in_pounds ?> (lbs)</td>
                         <td><?php echo $value->height_in_feet ?>' <?php echo $value->height_in_inches ?>"</td>
                         <td>
@@ -78,11 +79,19 @@
                             class="btn btn-success btn-xs btn-wellness-program">Attendance</button>
                           <a style="margin-top:5px" href="<?php echo base_url("cms/users/pdf_attendance/$value->id") ?>" target="_blank" class="btn btn-default btn-xs"><i class="fa fa-print"></i></a>
                           <br >
+
                           <button 
                           data-payload='<?php echo json_encode($value->tito ,JSON_HEX_QUOT|JSON_HEX_APOS) ?>'
                           style="margin-top:5px" type="button" data-id='<?php echo $value->id; ?>'
                             class="btn btn-success btn-xs btn-tito">TiTo</button> 
                           <a style="margin-top:5px" href="<?php echo base_url("cms/users/pdf_tito/$value->id") ?>" target="_blank" class="btn btn-default btn-xs"><i class="fa fa-print"></i></a>
+                          <br>
+
+                          <button 
+                          data-payload='<?php echo json_encode($value->pedometer_counter ,JSON_HEX_QUOT|JSON_HEX_APOS) ?>'
+                          style="margin-top:5px" type="button" data-id='<?php echo $value->id; ?>'
+                            class="btn btn-success btn-xs btn-pedometer">Pedometer C.</button> 
+                          <a style="margin-top:5px" href="<?php echo base_url("cms/users/pdf_pedometer_counter/$value->id") ?>" target="_blank" class="btn btn-default btn-xs"><i class="fa fa-print"></i></a>
                           <br>
 
                           <div class="btn-group" style="margin-top:5px">
@@ -138,7 +147,9 @@
       <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-          <h4 class="modal-title">Manage</h4>
+          <h4 class="modal-title">Manage
+            <br><sub>(All fields marked with * are required)</sub>
+          </h4>
         </div>
         <div class="modal-body">
 
@@ -147,56 +158,56 @@
                 <div class="row">
                   <div class="col-md-6">
                     <div class="form-group">
-                      <label >First Name</label>
-                      <input type="text" class="form-control" name="fname" placeholder="First name">
+                      <label >Nickname *</label>
+                      <input type="text" class="form-control" name="fname" placeholder="First name" required>
                     </div>
                   </div>
                   <div class="col-md-6">
                     <div class="form-group">
-                      <label >Last name</label>
-                      <input type="text" class="form-control" name="lname" placeholder="Last name">
+                      <label >Full name *</label>
+                      <input type="text" class="form-control" name="lname" placeholder="Last name" required>
                     </div>
                   </div>
                 </div>
             </div>
             <div class="form-group">
-              <label >Pin</label>
-              <input type="text" class="form-control" name="pin" placeholder="Pin">
+              <label >Pin *</label>
+              <input type="text" class="form-control" name="pin" placeholder="Pin" required>
             </div>
             <div class="form-group">
-              <label >Gender</label>
-              <select class="form-control" name="gender">
+              <label >Gender *</label>
+              <select class="form-control" name="gender" required>
                 <option>male</option>
                 <option>female</option>
               </select>
             </div>            
             <div class="form-group">
-              <label >Initial weight (lbs)</label>
-              <input type="number" name="initial_weight_in_pounds" class="form-control">
+              <label >Initial weight (lbs) *</label>
+              <input type="number" step="0.1" name="initial_weight_in_pounds" class="form-control" required>
             </div>
             <div class="form-group">
-              <label >Birthdate</label> 
-              <input type="date" class="form-control" name="birth_date">
+              <label >Birthdate *</label> 
+              <input type="date" class="form-control" name="birth_date" required>
             </div>
             <div class="form-group">
                 <div class="row">
                   <div class="col-md-3">
-                  <label >Height in feet</label>
+                  <label >Height in feet *</label>
                     <div class="form-group">
-                      <input type="number" class="form-control" name="height_in_feet" placeholder="feet">
+                      <input type="number" class="form-control" name="height_in_feet" placeholder="feet" required>
                     </div>
                   </div>
                   <div class="col-md-3">
-                  <label >Height in inches</label>
+                  <label >Height in inches *</label>
                     <div class="form-group">
-                      <input type="number" class="form-control" name="height_in_inches" placeholder="inches">
+                      <input type="number" class="form-control" name="height_in_inches" placeholder="inches" required>
                     </div>
                   </div>
                 </div>
             </div>
             <div class="form-group">
-              <label >Profile picture</label> 
-              <div><img src="" id="profile_pic_modal_image" style="max-width:150px"></div>
+              <label >Profile picture *</label> 
+              <div><img src="" id="profile_pic_modal_image" style="max-width:150px" onerror="this.src='<?php echo base_url('public/admin/img/account.png') ?>'"></div>
               <input type="file" class="form-control" name="profile_pic_file">
             </div>
             <input type="hidden" name="__offset" value="<?php echo $this->uri->segment(4) ?>">
@@ -260,6 +271,38 @@
                 <th>Weight</th>
                 <th>Day</th>
                 <th>Type</th>
+              </tr>
+            </thead>
+            <tbody>
+              <!-- tbody -->
+            </tbody>
+          </table>
+
+          <div class="modal-footer">
+            <button data-dismiss="modal" class="btn btn-default" type="button">Close</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+  <!-- modal -->
+
+  <!-- Modal -->
+  <div class="modal fade pedometer-modal" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+          <h4 comments-o="modal-title">Pedometer Counter</h4>
+        </div>
+        <div class="modal-body">
+
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th>Date</th>
+                <th>Step count</th>
               </tr>
             </thead>
             <tbody>

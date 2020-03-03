@@ -14,9 +14,10 @@ class Scoreboard_model extends CI_model
       function __construct()
 	 {
 	    parent::__construct();
-	
-     	$this->quarter = $this->getQuarterByMonth(date('m'));
-		$this->quarter_where = $this->getQuarterWhere($this->quarter);
+
+		$this->year = $this->input->get('year')?: date('Y');
+    	$this->quarter = $this->input->get('quarter')?: $this->scoreboard_model->getQuarterByMonth(date('m'));
+		$this->quarter_where = $this->getQuarterWhere($this->quarter, $this->year);
 
 		$this->pedometer_counter_scores =	$this->getPedometerCounterScores();
 		$this->attendance_scores = $this->getAttendanceScores();
@@ -70,10 +71,10 @@ class Scoreboard_model extends CI_model
 
 	 function getPedometerCounterScores()
 	 {
-	 	$total_items_in_quarter = $this->db->query("
+	 	$total_items_in_quarter = @$this->db->query("
 	 		SELECT count(id) as total_items_in_quarter FROM pedometer_counter
 	 		WHERE $this->quarter_where 
-	 		GROUP BY user_id ORDER BY total_items_in_quarter DESC LIMIT 1")->row()->total_items_in_quarter;
+	 		GROUP BY user_id ORDER BY total_items_in_quarter DESC LIMIT 1")->row()->total_items_in_quarter ?: 0;
 
 	 	$res = $this->db->query("SELECT *, SUM(step_count) as total_steps, COUNT(id) as total_entries, ($total_items_in_quarter * $this->steps_needed) as steps_desired, (SUM(step_count) / ($total_items_in_quarter * $this->steps_needed)) * 100 as step_rate, (((SUM(step_count) / ($total_items_in_quarter * $this->steps_needed)) * 100) * $this->pedometer_counter_score_percentage) / 100 as score
 	 		 	FROM pedometer_counter 
@@ -88,14 +89,14 @@ class Scoreboard_model extends CI_model
 
 	 function getAttendanceScores()
 	 {
-	 	$total_items_in_quarter = $this->db->query("
+	 	$total_items_in_quarter = @$this->db->query("
 	 	SELECT *, count(id) as total_items_in_quarter 
 	 	FROM `wellness_program`
 	 	WHERE $this->quarter_where 
 		GROUP BY user_id
 		ORDER BY total_items_in_quarter DESC
 		LIMIT 1
- 		")->row()->total_items_in_quarter;
+ 		")->row()->total_items_in_quarter ?: 0;
 
  		$res = $this->db->query("SELECT *, COUNT(id) as total_attendance, 
  			(((count(id) / ($total_items_in_quarter) * 100) * $this->attendance_score_percentage) / 100) as score
@@ -178,14 +179,14 @@ class Scoreboard_model extends CI_model
 
 	 function getHappinessMeterScores()
 	 {
-	 	$total_items_in_quarter = $this->db->query("
+	 	$total_items_in_quarter = @$this->db->query("
 	 	SELECT *, count(id) as total_items_in_quarter 
 	 	FROM `happiness_meter`
 	 	WHERE $this->quarter_where 
 		GROUP BY user_id
 		ORDER BY total_items_in_quarter DESC
 		LIMIT 1
- 		")->row()->total_items_in_quarter;	
+ 		")->row()->total_items_in_quarter ?: 0;	
 
 	 	$res = $this->db->query("SELECT *, SUM(mood) as total_mood, COUNT(id) as total_entries, ($total_items_in_quarter * $this->mood_needed) as mood_needed, (SUM(mood) / ($total_items_in_quarter * $this->mood_needed)) * 100 as mood_rate, 
 	 		(
@@ -202,7 +203,7 @@ class Scoreboard_model extends CI_model
 	 	return $res;
 	 }
 	 
-	 function getQuarterWhere($quarter_number = 1, $date_column = 'datetime', $year = null)
+	 function getQuarterWhere($quarter_number = 1, $year = null, $date_column = 'datetime')
 	 {
 	 	$quarter_where = '1';
 	 	$year = ($year)?: date('Y');
