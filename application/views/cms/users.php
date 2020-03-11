@@ -159,7 +159,7 @@
                   <div class="col-md-6">
                     <div class="form-group">
                       <label >Nickname *</label>
-                      <input type="text" class="form-control" name="fname" placeholder="First name" required>
+                      <input type="text" class="form-control" name="fname" placeholder="Nickname" required>
                     </div>
                   </div>
                   <div class="col-md-6">

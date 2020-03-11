@@ -37,6 +37,9 @@ class Users_model extends Crud_model
 	  	foreach ($res as $value) {
 	  		$value->pin = base64_decode($value->pin);
   			$value->profile_pic_path = (strpos($value->profile_pic_file, 'http') !== false) ? $value->profile_pic_file : base_url("$this->upload_dir/") . $value->profile_pic_file;
+  			$value->initial_weight_in_pounds = round($value->initial_weight_in_pounds);
+  			$value->height_in_feet = (float)$value->height_in_feet;
+  			$value->height_in_inches = (float)$value->height_in_inches;
 
 	  	}
 	  	return $res;

@@ -50,6 +50,9 @@ class Scoreboard_model extends CI_model
 			$value->pedometer_counter_score = $this->getSingleUserCiteriaScore('pedometer_counter_scores', $value->id);
 			$value->attendance_score = $this->getSingleUserCiteriaScore('attendance_scores', $value->id);
 			$value->happiness_meter_score = $this->getSingleUserCiteriaScore('happiness_meter_scores', $value->id);
+			$value->initial_weight_in_pounds = (int) round($value->initial_weight_in_pounds);
+			$value->height_in_feet = (int) $value->height_in_feet;
+			$value->height_in_inches = (int) $value->height_in_inches;
 
 			$value->total_score = 
 				$value->bmi_score +
