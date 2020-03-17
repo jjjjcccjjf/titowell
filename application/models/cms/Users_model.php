@@ -46,6 +46,8 @@ class Users_model extends Admin_core_model
       $value->wellness_program = $this->getWellnessProgram($value);
       
       $value->pedometer_counter = $this->getPedometerCounter($value);
+
+      $value->health_condition = $value->health_condition ?: "None";
   	}
   	return $res;
   }

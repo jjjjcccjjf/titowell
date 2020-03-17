@@ -7,6 +7,8 @@ class Users_model extends Crud_model
 	 {
 	    parent::__construct();
  		$this->upload_dir = 'uploads/users';
+
+ 		$this->load->model('api/scoreboard_model');
 	 }
 
 	 function getFromLastTimestamp($timestamp) {
@@ -40,8 +42,20 @@ class Users_model extends Crud_model
   			$value->initial_weight_in_pounds = round($value->initial_weight_in_pounds);
   			$value->height_in_feet = (float)$value->height_in_feet;
   			$value->height_in_inches = (float)$value->height_in_inches;
+  			$value->health_condition = $value->health_condition ?: "None";
 
+			$value->bmi_score = $this->scoreboard_model->getSingleUserCiteriaScore('bmi_scores', $value->id);
+			$value->pedometer_counter_score = $this->scoreboard_model->getSingleUserCiteriaScore('pedometer_counter_scores', $value->id);
+			$value->attendance_score = $this->scoreboard_model->getSingleUserCiteriaScore('attendance_scores', $value->id);
+			$value->happiness_meter_score = $this->scoreboard_model->getSingleUserCiteriaScore('happiness_meter_scores', $value->id);
+			
+			$value->total_score = 
+				$value->bmi_score +
+				$value->pedometer_counter_score +
+				$value->attendance_score +
+				$value->happiness_meter_score;
 	  	}
+
 	  	return $res;
 	 }
 }

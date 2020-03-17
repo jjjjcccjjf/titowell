@@ -155,50 +155,26 @@ GET `api/users/timestamp/:unix_timestamp`
 {
   "data": [
     {
-      "id": "3",
-      "fname": "Delta",
-      "lname": "One",
-      "pin": "12345",
-      "gender": "male",
-      "birth_date": "1994-12-24",
-      "profile_pic_file": "https:\/\/robohash.org\/delta.png?set=set4&size=150x150",
-      "profile_pic_path":"http:\/\/titowell.betaprojex.com\/users\/1579532454_frogwidhair.jpg",
-      "initial_weight_in_pounds": "140",
-      "height_in_feet": "5",
-      "height_in_inches": "8",
-      "created_at": "2019-12-11 14:30:31",
-      "updated_at": "2020-01-02 14:29:12"
-    },
-    {
       "id": "1",
-      "fname": "Endan",
-      "lname": "Pendleton",
-      "pin": "12345",
+      "fname": "Agu",
+      "lname": "Agustin G. Moquite",
+      "pin": "51515",
       "gender": "male",
-      "birth_date": "1994-12-10",
-      "profile_pic_file": "https:\/\/robohash.org\/endan.png?set=set4&size=150x150",
-      "profile_pic_path":"http:\/\/titowell.betaprojex.com\/users\/1579532454_frogwidhair.jpg",
-      "initial_weight_in_pounds": "140",
-      "height_in_feet": "5",
-      "height_in_inches": "7",
-      "created_at": "2019-12-09 13:39:51",
-      "updated_at": "2020-01-02 14:29:06"
-    },
-    {
-      "id": "2",
-      "fname": "Jhondz",
-      "lname": "Anib",
-      "pin": "12345",
-      "gender": "male",
-      "birth_date": "1994-12-24",
-      "profile_pic_file": "https:\/\/robohash.org\/jhondz.png?set=set4&size=150x150",
-      "profile_pic_path":"http:\/\/titowell.betaprojex.com\/users\/1579532454_frogwidhair.jpg",
-      "initial_weight_in_pounds": "140",
-      "height_in_feet": "5",
-      "height_in_inches": "7",
-      "created_at": "2019-12-09 20:39:51",
-      "updated_at": "2020-01-02 14:29:10"
-    }
+      "health_condition": "None",
+      "birth_date": "1960-08-03",
+      "profile_pic_file": "1583139622_Agu.JPG",
+      "initial_weight_in_pounds": 153,
+      "height_in_feet": 5,
+      "height_in_inches": 4,
+      "created_at": "2020-03-02 17:00:22",
+      "updated_at": "2020-03-02 21:05:49",
+      "profile_pic_path": "http:\/\/titowell.betaprojex.com\/uploads\/users\/1583139622_Agu.JPG",
+      "bmi_score": 0,
+      "pedometer_counter_score": 0,
+      "attendance_score": 0,
+      "happiness_meter_score": 0,
+      "total_score": 0
+    } 
   ],
   "meta": {
     "message": "Got all data",

@@ -37,6 +37,7 @@
                     <th>Name</th>
                     <th>Pin</th>
                     <th>Gender</th>
+                    <th>Health condition</th>
                     <th>Birthdate</th>
                     <th>Picture</th>
                     <th>Initial weight (lbs)</th>
@@ -53,6 +54,7 @@
                         <td><?php echo $value->full_name ?></td>
                         <td><span style="display:block">********</span><button class="btn btn-xs btn-info view-pin" data-pin="<?php echo base64_decode($value->pin) ?>"><i class="fa fa-eye"></i></button></td>
                         <td><?php echo $value->gender ?></td>
+                        <td><?php echo $value->health_condition ?></td>
                         <td><?php echo $value->birth_date_formatted ?></td>
                         <td><img src="<?php echo $value->profile_pic_path ?>" style="max-width:150px" 
                           onerror="this.src='<?php echo base_url('public/admin/img/account.png') ?>'"></td>
@@ -180,6 +182,10 @@
                 <option>male</option>
                 <option>female</option>
               </select>
+            </div>    
+            <div class="form-group">
+              <label >Health Condition</label>
+              <input class="form-control" type="text" name="health_condition" placeholder="None">
             </div>            
             <div class="form-group">
               <label >Initial weight (lbs) *</label>
